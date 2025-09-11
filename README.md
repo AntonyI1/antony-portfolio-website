@@ -1,90 +1,80 @@
-# React + Vite + Hono + Cloudflare Workers
+# Antony Ibrahim - Portfolio Website
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/vite-react-template)
+A modern, responsive portfolio website showcasing software engineering expertise and professional projects.
 
-This template provides a minimal setup for building a React application with TypeScript and Vite, designed to run on Cloudflare Workers. It features hot module replacement, ESLint integration, and the flexibility of Workers deployments.
+## ✨ Features
 
-![React + TypeScript + Vite + Cloudflare Workers](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public)
+- 🎨 **Modern Design** - Clean, professional dark theme with purple-blue accents
+- 📱 **Responsive Layout** - Optimized for desktop, tablet, and mobile devices
+- ⚡ **Fast Performance** - Built with React, TypeScript, and Vite
+- 🌐 **Cloudflare Deployment** - Hosted on Cloudflare Workers for global performance
+- 📊 **Interactive Timeline** - Professional experience showcase
+- 🛠️ **Skills Organization** - Categorized technical skills display
+- 📄 **Resume Integration** - Direct PDF download functionality
 
-<!-- dash-content-start -->
+## 🚀 Tech Stack
 
-🚀 Supercharge your web development with this powerful stack:
+- **Frontend**: React 19, TypeScript, Vite
+- **Styling**: Custom CSS with modern animations
+- **Deployment**: Cloudflare Workers
+- **Hosting**: Cloudflare (Free tier)
 
-- [**React**](https://react.dev/) - A modern UI library for building interactive interfaces
-- [**Vite**](https://vite.dev/) - Lightning-fast build tooling and development server
-- [**Hono**](https://hono.dev/) - Ultralight, modern backend framework
-- [**Cloudflare Workers**](https://developers.cloudflare.com/workers/) - Edge computing platform for global deployment
+## 🚀 Getting Started
 
-### ✨ Key Features
-
-- 🔥 Hot Module Replacement (HMR) for rapid development
-- 📦 TypeScript support out of the box
-- 🛠️ ESLint configuration included
-- ⚡ Zero-config deployment to Cloudflare's global network
-- 🎯 API routes with Hono's elegant routing
-- 🔄 Full-stack development setup
-- 🔎 Built-in Observability to monitor your Worker
-
-Get started in minutes with local development or deploy directly via the Cloudflare dashboard. Perfect for building modern, performant web applications at the edge.
-
-<!-- dash-content-end -->
-
-## Getting Started
-
-To start a new project with this template, run:
+Clone the repository and install dependencies:
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/vite-react-template
-```
-
-A live deployment of this template is available at:
-[https://react-vite-template.templates.workers.dev](https://react-vite-template.templates.workers.dev)
-
-## Development
-
-Install dependencies:
-
-```bash
+git clone https://github.com/AntonyI1/antony-portfolio-website.git
+cd antony-portfolio-website
 npm install
 ```
 
-Start the development server with:
+## 🛠️ Development
+
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at [http://localhost:5173](http://localhost:5173).
+Your portfolio will be available at [http://localhost:5173](http://localhost:5173).
 
-## Production
+## 🚀 Deployment
 
-Build your project for production:
+Build for production:
 
 ```bash
 npm run build
 ```
 
-Preview your build locally:
+Deploy to Cloudflare Workers:
 
 ```bash
-npm run preview
+npm run deploy
 ```
 
-Deploy your project to Cloudflare Workers:
+## 📁 Project Structure
 
-```bash
-npm run build && npm run deploy
+```
+src/
+├── react-app/
+│   ├── App.tsx          # Main portfolio component
+│   ├── App.css          # Styling and animations
+│   ├── index.css        # Global styles
+│   └── main.tsx         # React entry point
+├── worker/
+│   └── index.ts         # Cloudflare Worker
+public/
+└── resume.pdf           # Resume PDF file
 ```
 
-Monitor your workers:
+## 🎨 Customization
 
-```bash
-npx wrangler tail
-```
+- Update personal information in `src/react-app/App.tsx`
+- Modify styling in `src/react-app/App.css`
+- Replace `public/resume.pdf` with your resume
+- Update social media links and contact information
 
-## Additional Resources
+## 📄 License
 
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
-- [Vite Documentation](https://vitejs.dev/guide/)
-- [React Documentation](https://reactjs.org/)
-- [Hono Documentation](https://hono.dev/)
+This project is open source and available under the [MIT License](LICENSE).
