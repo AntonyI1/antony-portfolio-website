@@ -149,7 +149,7 @@ function App() {
             meaningful impact across various industries and technologies.
           </p>
           <div className="hero-actions">
-            <a href="/resume.pdf" className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            <a href="/Antony_Ibrahim_Resume.pdf" className="btn btn-primary" target="_blank" rel="noopener noreferrer">
               resume
             </a>
             <a href="https://github.com/AntonyI1" className="btn btn-icon" target="_blank" rel="noopener noreferrer">
