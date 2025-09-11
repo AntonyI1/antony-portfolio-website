@@ -1,80 +1,50 @@
-# Antony Ibrahim - Portfolio Website
+# Antony Ibrahim - Portfolio
 
-A modern, responsive portfolio website showcasing software engineering expertise and professional projects.
+Hey there! 👋 This is my personal portfolio website where I showcase my work as a software engineer.
 
-## ✨ Features
+I built this to highlight my projects, experience, and skills in a clean, modern way. The site features a dark theme, smooth animations, and is fully responsive.
 
-- 🎨 **Modern Design** - Clean, professional dark theme with purple-blue accents
-- 📱 **Responsive Layout** - Optimized for desktop, tablet, and mobile devices
-- ⚡ **Fast Performance** - Built with React, TypeScript, and Vite
-- 🌐 **Cloudflare Deployment** - Hosted on Cloudflare Workers for global performance
-- 📊 **Interactive Timeline** - Professional experience showcase
-- 🛠️ **Skills Organization** - Categorized technical skills display
-- 📄 **Resume Integration** - Direct PDF download functionality
+## What's Inside
 
-## 🚀 Tech Stack
+- **Experience Timeline** - My career journey from UC Irvine to Genesis Healthcare
+- **Projects** - Some of my favorite work including PokeTrader and TombVM
+- **Skills** - Organized by category (OCD-friendly)
+- **Resume** - Direct download for your convenience
 
-- **Frontend**: React 19, TypeScript, Vite
-- **Styling**: Custom CSS with modern animations
-- **Deployment**: Cloudflare Workers
-- **Hosting**: Cloudflare (Free tier)
+## Tech Stack
 
-## 🚀 Getting Started
+- React 19 + TypeScript + Vite
+- Custom CSS (vanilla, no framework dependencies)
+- Cloudflare Workers for hosting
 
-Clone the repository and install dependencies:
+## Getting Started
+
+If you want to run this locally:
 
 ```bash
 git clone https://github.com/AntonyI1/antony-portfolio-website.git
 cd antony-portfolio-website
 npm install
-```
-
-## 🛠️ Development
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
-Your portfolio will be available at [http://localhost:5173](http://localhost:5173).
-
-## 🚀 Deployment
-
-Build for production:
+## Development
 
 ```bash
-npm run build
+npm run dev    # Start dev server
+npm run build  # Build for production
+npm run deploy # Deploy to Cloudflare
 ```
 
-Deploy to Cloudflare Workers:
+## Project Structure
 
-```bash
-npm run deploy
-```
+Pretty straightforward:
+- `src/react-app/` - All the React code
+- `public/` - Static assets (including my resume)
+- `src/worker/` - Cloudflare Worker setup
 
-## 📁 Project Structure
+## Customization
 
-```
-src/
-├── react-app/
-│   ├── App.tsx          # Main portfolio component
-│   ├── App.css          # Styling and animations
-│   ├── index.css        # Global styles
-│   └── main.tsx         # React entry point
-├── worker/
-│   └── index.ts         # Cloudflare Worker
-public/
-└── resume.pdf           # Resume PDF file
-```
+Want to use this as a template? Go for it! Just update the content in `App.tsx` and `App.css` to make it yours.
 
-## 🎨 Customization
-
-- Update personal information in `src/react-app/App.tsx`
-- Modify styling in `src/react-app/App.css`
-- Replace `public/resume.pdf` with your resume
-- Update social media links and contact information
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+---
