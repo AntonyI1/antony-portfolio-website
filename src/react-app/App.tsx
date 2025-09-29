@@ -61,11 +61,11 @@ function App() {
   const skillCategories = [
     {
       title: "Programming Languages",
-      skills: ["Python", "JavaScript", "C++", "Java", "SQL", "HTML/CSS"]
+      skills: ["Python", "JavaScript", "C++", "TypeScript", "C#", "HTML/CSS", "Java", "SQL"]
     },
     {
       title: "Frameworks & Libraries",
-      skills: ["React", "Node.js", "Express.js", "TailwindCSS", "Pandas", "NumPy"]
+      skills: [".NET", "Vue", "React", "Node.js", "Express.js", "TailwindCSS", "Pandas", "NumPy"]
     },
     {
       title: "Cloud Services",
@@ -77,7 +77,7 @@ function App() {
     },
     {
       title: "Databases",
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "Amazon Aurora"]
+      skills: ["MongoDB", "DynamomDB", "PostgreSQL", "MySQL", "Sqlite", "Amazon Aurora"]
     },
     {
       title: "Specializations",
