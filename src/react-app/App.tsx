@@ -4,26 +4,96 @@ import "./App.css";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+  const [typedText, setTypedText] = useState("");
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const texts = [
+    "Software Engineer",
+    "Full-Stack Developer",
+    "Data Pipeline Engineer",
+    "AI Applications Developer",
+    "Cloud Solutions Builder"
+  ];
 
   useEffect(() => {
-    // Smooth scrolling for navigation
-    const handleScroll = () => {
-      const sections = ['home', 'experience', 'projects', 'skills', 'contact'];
-      const scrollPosition = window.scrollY + 100;
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const typeText = () => {
+      const current = texts[currentTextIndex];
+      
+      if (isDeleting) {
+        setTypedText(current.substring(0, typedText.length - 1));
+        if (typedText === '') {
+          setIsDeleting(false);
+          setCurrentTextIndex((prev) => (prev + 1) % texts.length);
+        }
+      } else {
+        setTypedText(current.substring(0, typedText.length + 1));
+        if (typedText === current) {
+          setTimeout(() => setIsDeleting(true), 2000);
         }
       }
     };
 
+    const timer = setTimeout(typeText, isDeleting ? 50 : 100);
+    return () => clearTimeout(timer);
+  }, [typedText, isDeleting, currentTextIndex, texts]);
+
+  useEffect(() => {
+    // Smooth scrolling for navigation
+    const handleScroll = () => {
+      const sections = ['home', 'experience', 'publications', 'projects', 'skills', 'contact'];
+      const scrollPosition = window.scrollY + 200; // Increased offset for better detection
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+
+      // If we're at the very bottom of the page, highlight contact
+      if (scrollPosition + windowHeight >= documentHeight - 100) {
+        setActiveSection('contact');
+        return;
+      }
+
+      // Find the current section by checking which section is most visible
+      let currentSection = 'home';
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop } = element;
+          
+          // If we've scrolled past the start of this section
+          if (scrollPosition >= offsetTop - 100) {
+            currentSection = section;
+            break;
+          }
+        }
+      }
+      
+      setActiveSection(currentSection);
+
+      // Scroll reveal animations
+      const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+      animatedElements.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
+        }
+      });
+    };
+
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Run once on mount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -58,30 +128,33 @@ function App() {
     }
   ];
 
+  const publications = [
+    {
+      title: "An Exploratory Genomic and Transcriptomic Analysis Between Choloepus didactylus and Homo sapiens",
+      authors: "Ariella Baran, Antony Ibrahim, Yuka Nakano, Hideyuki Aoshima, Takeshi Ozeki, Iri Sato-Baran, David D. Ordinario",
+      journal: "Genes 2025, 16(3), 272",
+      doi: "https://doi.org/10.3390/genes16030272",
+      published: "February 25, 2025",
+      description: "Co-authored research paper on comparative genomic analysis between sloths and humans, investigating genetic basis of unique traits like slow movement, low metabolism, and longevity."
+    }
+  ];
+
   const skillCategories = [
     {
-      title: "Programming Languages",
-      skills: ["Python", "JavaScript", "C++", "TypeScript", "C#", "HTML/CSS", "Java", "SQL"]
+      title: "Languages",
+      skills: ["C++", "Python", "C#", "Java", "JavaScript", "TypeScript", "SQL", "HTML", "CSS", "TailwindCSS", "MySQL", "PostgreSQL"]
     },
     {
-      title: "Frameworks & Libraries",
-      skills: [".NET", "Vue", "React", "Node.js", "Express.js", "TailwindCSS", "Pandas", "NumPy"]
+      title: "Technologies",
+      skills: ["AWS", ".NET", "Vue", "Angular", "Linux", "Git", "React", "Node.js", "Express.js", "Amazon Aurora", "MongoDB", "RESTful API"]
     },
     {
-      title: "Cloud Services",
-      skills: ["AWS", "EC2", "S3", "Lambda", "Bedrock", "IAM"]
+      title: "Developer Tools",
+      skills: ["VS Code", "Visual Studio", "JupyterHub", "Metabase", "Docker", "Apache Airflow"]
     },
     {
-      title: "DevOps & Tools",
-      skills: ["Docker", "CI/CD", "Git", "Linux", "Apache Airflow", "JupyterHub"]
-    },
-    {
-      title: "Databases",
-      skills: ["MongoDB", "DynamomDB", "PostgreSQL", "MySQL", "Sqlite", "Amazon Aurora"]
-    },
-    {
-      title: "Specializations",
-      skills: ["Backend", "Data Analysis", "RESTful APIs", "Binary Analysis", "System Design", "Agile Development"]
+      title: "Libraries",
+      skills: ["Pandas", "NumPy", "TensorFlow", "Scikit-learn", "Matplotlib", "SciPy"]
     }
   ];
 
@@ -105,6 +178,12 @@ function App() {
               onClick={() => scrollToSection('experience')}
             >
               experience
+            </button>
+            <button 
+              className={`nav-link ${activeSection === 'publications' ? 'active' : ''}`}
+              onClick={() => scrollToSection('publications')}
+            >
+              publications
             </button>
             <button 
               className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
@@ -137,11 +216,20 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="hero">
+        <div 
+          className="mouse-follower"
+          style={{
+            left: mousePosition.x - 10,
+            top: mousePosition.y - 10,
+          }}
+        ></div>
         <div className="container">
           <h1 className="hero-title">
             Hi, I am <span className="highlight">Antony Ibrahim</span>
           </h1>
-          <h2 className="hero-subtitle">A Software Engineer.</h2>
+          <h2 className="hero-subtitle">
+            A <span className="typing-text">{typedText}</span><span className="cursor">|</span>
+          </h2>
           <p className="hero-description">
             I'm passionate about building scalable data pipelines and AI-powered solutions. 
             I've optimized data processing systems, reducing runtime by 88% and cutting 
@@ -167,7 +255,7 @@ function App() {
       </section>
 
       {/* Experience Timeline Section */}
-      <section id="experience" className="experience">
+      <section id="experience" className="experience fade-in">
         <div className="container">
           <h2 className="section-title">EXPERIENCE</h2>
           <div className="timeline">
@@ -227,8 +315,34 @@ function App() {
         </div>
       </section>
 
+      {/* Publications Section */}
+      <section id="publications" className="publications slide-in-left">
+        <div className="container">
+          <h2 className="section-title">PUBLICATIONS</h2>
+          <div className="publications-list">
+            {publications.map((publication, index) => (
+              <div key={index} className="publication-card">
+                <h3 className="publication-title">{publication.title}</h3>
+                <p className="publication-authors">{publication.authors}</p>
+                <p className="publication-journal">{publication.journal}</p>
+                <p className="publication-date">Published: {publication.published}</p>
+                <p className="publication-description">{publication.description}</p>
+                <a 
+                  href={publication.doi} 
+                  className="publication-link"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  View Publication
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
-      <section id="projects" className="projects">
+      <section id="projects" className="projects slide-in-right">
         <div className="container">
           <h2 className="section-title">PROJECTS</h2>
           <div className="projects-grid">
@@ -266,7 +380,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="skills">
+      <section id="skills" className="skills scale-in">
         <div className="container">
           <h2 className="section-title">SKILLS</h2>
           <div className="skills-container">
@@ -285,7 +399,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="contact">
+      <section id="contact" className="contact fade-in">
         <div className="container">
           <h2 className="section-title">CONTACT</h2>
           <a href="mailto:antonyibrahim0@gmail.com" className="btn btn-primary btn-large">
