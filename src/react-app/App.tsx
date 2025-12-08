@@ -8,13 +8,13 @@ function App() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showAllSkills, setShowAllSkills] = useState(false);
 
   const texts = [
+    "AI Engineer",
     "Software Engineer",
     "Full-Stack Developer",
-    "Data Pipeline Engineer",
-    "AI Applications Developer",
-    "Cloud Solutions Builder"
+    "Data Pipeline Engineer"
   ];
 
   useEffect(() => {
@@ -52,40 +52,34 @@ function App() {
     // Smooth scrolling for navigation
     const handleScroll = () => {
       const sections = ['home', 'experience', 'publications', 'projects', 'skills', 'contact'];
-      const scrollPosition = window.scrollY + 200; // Increased offset for better detection
-      const documentHeight = document.documentElement.scrollHeight;
-      const windowHeight = window.innerHeight;
+      const viewportCenter = window.innerHeight / 2;
 
-      // If we're at the very bottom of the page, highlight contact
-      if (scrollPosition + windowHeight >= documentHeight - 100) {
-        setActiveSection('contact');
-        return;
-      }
+      // Find the section closest to the center of the viewport
+      let closestSection = 'home';
+      let closestDistance = Infinity;
 
-      // Find the current section by checking which section is most visible
-      let currentSection = 'home';
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
+      for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const { offsetTop } = element;
-          
-          // If we've scrolled past the start of this section
-          if (scrollPosition >= offsetTop - 100) {
-            currentSection = section;
-            break;
+          const rect = element.getBoundingClientRect();
+          const sectionCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(sectionCenter - viewportCenter);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestSection = section;
           }
         }
       }
-      
-      setActiveSection(currentSection);
+
+      setActiveSection(closestSection);
 
       // Scroll reveal animations
       const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
       animatedElements.forEach((element) => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
+
         if (elementTop < window.innerHeight - elementVisible) {
           element.classList.add('visible');
         }
@@ -100,7 +94,14 @@ function App() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      if (sectionId === 'contact' || sectionId === 'home') {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        const elementRect = element.getBoundingClientRect();
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
+        const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
+        window.scrollTo({ top: middle, behavior: 'smooth' });
+      }
     }
   };
 
@@ -139,23 +140,14 @@ function App() {
     }
   ];
 
-  const skillCategories = [
-    {
-      title: "Languages",
-      skills: ["C++", "Python", "C#", "Java", "JavaScript", "TypeScript", "SQL", "HTML", "CSS", "TailwindCSS", "MySQL", "PostgreSQL"]
-    },
-    {
-      title: "Technologies",
-      skills: ["AWS", ".NET", "Vue", "Angular", "Linux", "Git", "React", "Node.js", "Express.js", "Amazon Aurora", "MongoDB", "RESTful API"]
-    },
-    {
-      title: "Developer Tools",
-      skills: ["VS Code", "Visual Studio", "JupyterHub", "Metabase", "Docker", "Apache Airflow"]
-    },
-    {
-      title: "Libraries",
-      skills: ["Pandas", "NumPy", "TensorFlow", "Scikit-learn", "Matplotlib", "SciPy"]
-    }
+  const featuredSkills = [
+    "Python", "TypeScript", "AWS", "React", "Node.js", "PostgreSQL", "Docker", "TensorFlow", "n8n"
+  ];
+
+  const allSkills = [
+    "Python", "TypeScript", "JavaScript", "C++", "Java", "SQL",
+    "AWS", "React", "Node.js", "Express.js", "PostgreSQL", "MongoDB",
+    "Docker", "Git", "Linux", "TensorFlow", "Pandas", "NumPy", "n8n"
   ];
 
   return (
@@ -263,9 +255,21 @@ function App() {
               <div className="timeline-marker current"></div>
               <div className="timeline-content">
                 <div className="timeline-header">
+                  <h3>AI Engineer</h3>
+                  <span className="timeline-company">StartGuides</span>
+                  <span className="timeline-date">Dec 2025 - Present</span>
+                </div>
+                <p className="timeline-location">Remote</p>
+              </div>
+            </div>
+
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <div className="timeline-header">
                   <h3>Software Engineer</h3>
                   <span className="timeline-company">Genesis Healthcare</span>
-                  <span className="timeline-date">Sep 2024 - Present</span>
+                  <span className="timeline-date">Sep 2024 - Dec 2025</span>
                 </div>
                 <p className="timeline-location">Irvine, CA</p>
                 <ul className="timeline-achievements">
@@ -383,18 +387,17 @@ function App() {
       <section id="skills" className="skills scale-in">
         <div className="container">
           <h2 className="section-title">SKILLS</h2>
-          <div className="skills-container">
-            {skillCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="skill-category">
-                <h3 className="skill-category-title">{category.title}</h3>
-                <div className="skill-category-grid">
-                  {category.skills.map((skill, skillIndex) => (
-                    <span key={skillIndex} className="skill-tag">{skill}</span>
-                  ))}
-                </div>
-              </div>
+          <div className="skills-grid">
+            {(showAllSkills ? allSkills : featuredSkills).map((skill, index) => (
+              <span key={index} className="skill-tag">{skill}</span>
             ))}
           </div>
+          <button
+            className="skills-toggle"
+            onClick={() => setShowAllSkills(!showAllSkills)}
+          >
+            {showAllSkills ? 'Show less' : 'Show all'}
+          </button>
         </div>
       </section>
 
