@@ -8,7 +8,7 @@
       "Step 3: Create routes for /, /about, /now, /blog, /blog/:slug, /work",
       "Step 4: Verify navigation works by clicking between routes"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -19,7 +19,7 @@
       "Step 3: Add navigation items: Home, About, Now, Blog, Work",
       "Step 4: Verify navigation appears on all pages"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -31,7 +31,7 @@
       "Step 4: Verify clicking toggle switches between light/dark themes",
       "Step 5: Verify theme preference persists across page refreshes"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -43,7 +43,7 @@
       "Step 4: Apply colors throughout the site",
       "Step 5: Take screenshot and verify warm brown/amber tones instead of cyan/purple"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -54,7 +54,7 @@
       "Step 3: Set --accent-primary: #c9844a",
       "Step 4: Toggle to light mode and verify warm cream background"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -67,7 +67,7 @@
       "Step 5: Set --line-height-body: 1.7 for generous spacing",
       "Step 6: Verify headings use serif font and body text is 18px"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -79,7 +79,7 @@
       "Step 4: Add quick navigation buttons to About and Work pages",
       "Step 5: Navigate to / and verify hero displays correctly"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -91,7 +91,7 @@
       "Step 4: Verify static text displays instead of animated typing",
       "Step 5: Verify no cursor-following visual effects"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -103,7 +103,7 @@
       "Step 4: Navigate to /about and verify page renders",
       "Step 5: Verify markdown content displays correctly"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -115,7 +115,7 @@
       "Step 4: Navigate to /now and verify page renders",
       "Step 5: Verify lastUpdated and location display in header"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -292,7 +292,7 @@
       "Step 3: Add catch-all route in router",
       "Step 4: Navigate to non-existent URL and verify 404 page displays"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -315,7 +315,7 @@
       "Step 3: Style active link with accent color or underline",
       "Step 4: Navigate between pages and verify active link updates"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -398,7 +398,7 @@
       "Step 4: Make header sticky/fixed at top (optional)",
       "Step 5: Verify header looks clean and inviting"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -541,7 +541,7 @@
       "Step 4: Add subtle background gradient or texture (optional)",
       "Step 5: Verify hero feels warm and inviting, not corporate"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
