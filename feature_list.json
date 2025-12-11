@@ -1,0 +1,761 @@
+[
+  {
+    "category": "functional",
+    "description": "Set up React Router for client-side navigation with all required routes",
+    "steps": [
+      "Step 1: Install react-router-dom dependency",
+      "Step 2: Configure BrowserRouter in App.tsx",
+      "Step 3: Create routes for /, /about, /now, /blog, /blog/:slug, /work",
+      "Step 4: Verify navigation works by clicking between routes"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create Layout component with navigation header",
+    "steps": [
+      "Step 1: Create src/components/layout/Header.tsx with navigation links",
+      "Step 2: Create src/components/layout/Layout.tsx as page wrapper",
+      "Step 3: Add navigation items: Home, About, Now, Blog, Work",
+      "Step 4: Verify navigation appears on all pages"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Implement theme toggle between light and dark modes",
+    "steps": [
+      "Step 1: Create ThemeToggle component",
+      "Step 2: Create useTheme hook for theme state management",
+      "Step 3: Add theme toggle button to header",
+      "Step 4: Verify clicking toggle switches between light/dark themes",
+      "Step 5: Verify theme preference persists across page refreshes"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Implement warm cozy color palette for dark mode",
+    "steps": [
+      "Step 1: Create CSS variables in styles/variables.css with warm neutrals",
+      "Step 2: Set --bg-primary: #1a1814, --text-primary: #f5f0e8",
+      "Step 3: Set --accent-primary: #e8a854 (warm amber)",
+      "Step 4: Apply colors throughout the site",
+      "Step 5: Take screenshot and verify warm brown/amber tones instead of cyan/purple"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Implement warm cozy color palette for light mode",
+    "steps": [
+      "Step 1: Add light mode CSS variables",
+      "Step 2: Set --bg-primary: #faf8f5 (warm cream), --text-primary: #2d2820",
+      "Step 3: Set --accent-primary: #c9844a",
+      "Step 4: Toggle to light mode and verify warm cream background"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Set up typography system with serif headings and comfortable reading sizes",
+    "steps": [
+      "Step 1: Create styles/typography.css",
+      "Step 2: Set --font-heading to Fraunces/Georgia serif",
+      "Step 3: Set --font-body to Inter/system-ui",
+      "Step 4: Set --text-base: 1.125rem (18px) for comfortable reading",
+      "Step 5: Set --line-height-body: 1.7 for generous spacing",
+      "Step 6: Verify headings use serif font and body text is 18px"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create Home page with hero section",
+    "steps": [
+      "Step 1: Create src/pages/Home.tsx",
+      "Step 2: Add hero section with 'Hey, I'm Antony' greeting",
+      "Step 3: Add brief tagline (1-2 sentences)",
+      "Step 4: Add quick navigation buttons to About and Work pages",
+      "Step 5: Navigate to / and verify hero displays correctly"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Remove typewriter effect and mouse follower from original site",
+    "steps": [
+      "Step 1: Review App.tsx for typewriter animation code",
+      "Step 2: Remove typewriter effect implementation",
+      "Step 3: Remove mouse follower effect code",
+      "Step 4: Verify static text displays instead of animated typing",
+      "Step 5: Verify no cursor-following visual effects"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create About page with markdown content support",
+    "steps": [
+      "Step 1: Create src/pages/About.tsx",
+      "Step 2: Create content/about.md with frontmatter",
+      "Step 3: Add placeholder content sections: Short Version, Longer Story, What I Do",
+      "Step 4: Navigate to /about and verify page renders",
+      "Step 5: Verify markdown content displays correctly"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create Now page with markdown content support",
+    "steps": [
+      "Step 1: Create src/pages/Now.tsx",
+      "Step 2: Create content/now.md with frontmatter (lastUpdated, location)",
+      "Step 3: Add sections: Work, Learning, Reading, Building, Life",
+      "Step 4: Navigate to /now and verify page renders",
+      "Step 5: Verify lastUpdated and location display in header"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Set up content directory structure for markdown files",
+    "steps": [
+      "Step 1: Create content/ directory in project root",
+      "Step 2: Create content/blog/ subdirectory",
+      "Step 3: Verify directories exist and are tracked by git",
+      "Step 4: Add .gitkeep or example files if needed"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Install and configure markdown processing dependencies",
+    "steps": [
+      "Step 1: Install gray-matter for frontmatter parsing",
+      "Step 2: Install marked for markdown to HTML conversion",
+      "Step 3: Install shiki for syntax highlighting",
+      "Step 4: Verify all packages install successfully",
+      "Step 5: Run npm install and check package.json"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create markdown processing utility for blog posts",
+    "steps": [
+      "Step 1: Create src/lib/content.ts",
+      "Step 2: Implement function to parse markdown with gray-matter",
+      "Step 3: Implement function to convert markdown to HTML with marked",
+      "Step 4: Add syntax highlighting with shiki",
+      "Step 5: Export utilities for use in components"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create blog index page listing all posts",
+    "steps": [
+      "Step 1: Create src/pages/Blog.tsx",
+      "Step 2: Load all blog posts from content/blog/",
+      "Step 3: Display posts in chronological order (newest first)",
+      "Step 4: Show title, date, description, and tags for each post",
+      "Step 5: Navigate to /blog and verify post list displays"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create blog post detail page with markdown rendering",
+    "steps": [
+      "Step 1: Create src/pages/BlogPost.tsx",
+      "Step 2: Use useParams to get slug from URL",
+      "Step 3: Load and parse markdown file matching slug",
+      "Step 4: Render post title, date, tags, and content",
+      "Step 5: Create test post and verify /blog/:slug displays correctly"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Add Recent Posts section to home page",
+    "steps": [
+      "Step 1: Create src/components/home/RecentPosts.tsx",
+      "Step 2: Load 3 most recent blog posts",
+      "Step 3: Display each with title, date, description",
+      "Step 4: Add 'See all posts' link to /blog",
+      "Step 5: Verify recent posts appear on home page"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create Work page migrating existing portfolio content",
+    "steps": [
+      "Step 1: Create src/pages/Work.tsx",
+      "Step 2: Migrate Experience section from App.tsx",
+      "Step 3: Migrate Projects section from App.tsx",
+      "Step 4: Migrate Publications section from App.tsx",
+      "Step 5: Migrate Skills section from App.tsx",
+      "Step 6: Navigate to /work and verify all sections display"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create Timeline component for work experience",
+    "steps": [
+      "Step 1: Create src/components/work/Timeline.tsx",
+      "Step 2: Extract experience data from original App.tsx",
+      "Step 3: Render each job with company, role, dates, description",
+      "Step 4: Apply new cozy design styling",
+      "Step 5: Verify timeline displays correctly on /work page"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create ProjectCard component for portfolio projects",
+    "steps": [
+      "Step 1: Create src/components/work/ProjectCard.tsx",
+      "Step 2: Extract projects data from original App.tsx",
+      "Step 3: Render each project with title, description, technologies, links",
+      "Step 4: Apply card styling with warm colors",
+      "Step 5: Verify projects display on /work page"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create SkillsGrid component for technical skills",
+    "steps": [
+      "Step 1: Create src/components/work/SkillsGrid.tsx",
+      "Step 2: Extract skills data from original App.tsx",
+      "Step 3: Organize skills by category",
+      "Step 4: Render in grid layout with icons/tags",
+      "Step 5: Verify skills display on /work page"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Add resume download button to Work page",
+    "steps": [
+      "Step 1: Add 'Download Resume' button to Work page header",
+      "Step 2: Link to existing resume PDF",
+      "Step 3: Style button with accent color",
+      "Step 4: Verify clicking button downloads/opens resume"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create example blog post for testing",
+    "steps": [
+      "Step 1: Create content/blog/2025-01-15-hello-world.md",
+      "Step 2: Add proper frontmatter (title, date, description, tags, draft: false)",
+      "Step 3: Add sample content with headings, paragraphs, code blocks",
+      "Step 4: Verify post appears in blog index",
+      "Step 5: Verify post renders correctly at /blog/2025-01-15-hello-world"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Implement tag filtering on blog index page",
+    "steps": [
+      "Step 1: Extract unique tags from all blog posts",
+      "Step 2: Add tag filter UI to blog index page",
+      "Step 3: Implement filtering logic when tag is selected",
+      "Step 4: Add 'Clear filters' or 'All posts' option",
+      "Step 5: Verify clicking tag filters posts correctly"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Add reading time estimation to blog posts",
+    "steps": [
+      "Step 1: Create utility function to calculate reading time from word count",
+      "Step 2: Add reading time to blog post header",
+      "Step 3: Display as 'X min read' below title",
+      "Step 4: Verify reading time appears on blog post pages"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Implement 404 Not Found page",
+    "steps": [
+      "Step 1: Create src/pages/NotFound.tsx",
+      "Step 2: Add friendly 404 message with navigation links",
+      "Step 3: Add catch-all route in router",
+      "Step 4: Navigate to non-existent URL and verify 404 page displays"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Add back to blog link in blog post footer",
+    "steps": [
+      "Step 1: Add footer section to BlogPost component",
+      "Step 2: Add 'Back to Blog' link pointing to /blog",
+      "Step 3: Style link with accent color",
+      "Step 4: Verify link appears at bottom of blog posts",
+      "Step 5: Verify clicking link navigates back to blog index"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Implement active navigation link highlighting",
+    "steps": [
+      "Step 1: Use useLocation hook to detect current route",
+      "Step 2: Apply active class to current navigation link",
+      "Step 3: Style active link with accent color or underline",
+      "Step 4: Navigate between pages and verify active link updates"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Apply proper spacing and layout system throughout site",
+    "steps": [
+      "Step 1: Define spacing variables: --spacing-page: 2rem, --spacing-section: 4rem",
+      "Step 2: Apply consistent page padding to all routes",
+      "Step 3: Add section spacing between major content blocks",
+      "Step 4: Verify generous whitespace and breathing room on all pages"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Style cards with soft shadows and rounded corners",
+    "steps": [
+      "Step 1: Create Card component in src/components/common/Card.tsx",
+      "Step 2: Set --border-radius: 12px for softer corners",
+      "Step 3: Apply --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08)",
+      "Step 4: Use Card for project cards, blog post previews",
+      "Step 5: Verify cards have soft, warm appearance"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Optimize blog post reading experience with prose styling",
+    "steps": [
+      "Step 1: Create prose class for blog content",
+      "Step 2: Set max-width: 65ch for optimal line length",
+      "Step 3: Apply generous line-height: 1.7",
+      "Step 4: Style headings, paragraphs, lists with proper spacing",
+      "Step 5: Read a blog post and verify comfortable reading experience"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Style code blocks with syntax highlighting",
+    "steps": [
+      "Step 1: Configure shiki with appropriate theme (warm dark theme)",
+      "Step 2: Apply syntax highlighting to code blocks in blog posts",
+      "Step 3: Style code blocks with background and padding",
+      "Step 4: Add copy button to code blocks (optional)",
+      "Step 5: Verify code is readable with proper highlighting"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Style blockquotes with warm, inviting design",
+    "steps": [
+      "Step 1: Add blockquote styles to typography.css",
+      "Step 2: Apply left border with accent color",
+      "Step 3: Add padding and italic text style",
+      "Step 4: Create test blockquote in blog post",
+      "Step 5: Verify blockquotes stand out visually"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Create Tag component for blog post tags",
+    "steps": [
+      "Step 1: Create src/components/common/Tag.tsx",
+      "Step 2: Style as subtle pill/badge with border",
+      "Step 3: Use muted accent color for background",
+      "Step 4: Apply to blog index and blog post pages",
+      "Step 5: Verify tags display consistently"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Style navigation header with clean, minimal design",
+    "steps": [
+      "Step 1: Apply subtle background to header",
+      "Step 2: Add padding and proper link spacing",
+      "Step 3: Style links with hover states using accent color",
+      "Step 4: Make header sticky/fixed at top (optional)",
+      "Step 5: Verify header looks clean and inviting"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Create Footer component with contact info and links",
+    "steps": [
+      "Step 1: Create src/components/layout/Footer.tsx",
+      "Step 2: Add social media links (GitHub, LinkedIn, Email)",
+      "Step 3: Add copyright notice",
+      "Step 4: Style with muted colors and minimal design",
+      "Step 5: Verify footer appears on all pages"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Optimize mobile responsive design for all pages",
+    "steps": [
+      "Step 1: Add mobile breakpoints to CSS variables",
+      "Step 2: Test navigation on mobile (consider hamburger menu)",
+      "Step 3: Ensure proper text sizing and spacing on small screens",
+      "Step 4: Test blog posts for readability on mobile",
+      "Step 5: Test all pages at 375px, 768px, 1024px widths"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Add smooth page transitions between routes",
+    "steps": [
+      "Step 1: Add CSS transitions for route changes",
+      "Step 2: Implement fade-in effect when pages load",
+      "Step 3: Ensure transitions feel smooth, not jarring",
+      "Step 4: Navigate between pages and verify smooth transitions"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Style links throughout site with consistent hover effects",
+    "steps": [
+      "Step 1: Set link color to accent color (--link: #e8a854)",
+      "Step 2: Add hover color (--link-hover: #f4c076)",
+      "Step 3: Add underline on hover with transition",
+      "Step 4: Apply to all content links",
+      "Step 5: Verify links are visually distinct and responsive to hover"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Ensure Cloudflare Workers SPA routing works correctly",
+    "steps": [
+      "Step 1: Verify wrangler.json has not_found_handling: single-page-application",
+      "Step 2: Build project with npm run build",
+      "Step 3: Test preview with npm run preview",
+      "Step 4: Navigate to different routes in preview",
+      "Step 5: Refresh page on non-root route and verify it still works"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Add SEO meta tags to each page",
+    "steps": [
+      "Step 1: Create useDocumentTitle hook for page titles",
+      "Step 2: Add title tag for each route (Home, About, Now, Blog, Work)",
+      "Step 3: Add meta description tags where appropriate",
+      "Step 4: Add Open Graph tags for social sharing",
+      "Step 5: Verify page titles update when navigating between routes"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Implement draft post filtering (don't show draft: true posts)",
+    "steps": [
+      "Step 1: Check frontmatter for draft: true in blog posts",
+      "Step 2: Filter out draft posts from blog index",
+      "Step 3: Return 404 if accessing draft post directly",
+      "Step 4: Create test draft post",
+      "Step 5: Verify draft post doesn't appear in blog index"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Add current status from Now page to home page",
+    "steps": [
+      "Step 1: Extract key info from now.md (current work, location)",
+      "Step 2: Display in highlights section on home page",
+      "Step 3: Add 'Read more' link to /now",
+      "Step 4: Verify status displays on home page",
+      "Step 5: Verify link navigates to full now page"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Optimize bundle size and performance",
+    "steps": [
+      "Step 1: Run production build",
+      "Step 2: Analyze bundle size",
+      "Step 3: Implement code splitting for routes if needed",
+      "Step 4: Lazy load blog posts",
+      "Step 5: Verify build completes without warnings"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Handle blog post loading errors gracefully",
+    "steps": [
+      "Step 1: Add error handling when blog post not found",
+      "Step 2: Display friendly error message",
+      "Step 3: Add navigation link back to blog index",
+      "Step 4: Navigate to non-existent blog post slug",
+      "Step 5: Verify error message displays instead of crash"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Add year groupings to blog index for archive organization",
+    "steps": [
+      "Step 1: Group blog posts by year from date field",
+      "Step 2: Display year headers (e.g., '2025', '2024')",
+      "Step 3: List posts under respective years",
+      "Step 4: Add multiple posts from different years",
+      "Step 5: Verify posts are grouped correctly by year"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Style hero section with warm, welcoming visual design",
+    "steps": [
+      "Step 1: Create src/components/home/Hero.tsx",
+      "Step 2: Add large, friendly heading with serif font",
+      "Step 3: Style tagline with comfortable reading size",
+      "Step 4: Add subtle background gradient or texture (optional)",
+      "Step 5: Verify hero feels warm and inviting, not corporate"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Create consistent button styling across site",
+    "steps": [
+      "Step 1: Create src/components/common/Button.tsx",
+      "Step 2: Define primary style (accent color background)",
+      "Step 3: Define secondary style (outline/ghost variant)",
+      "Step 4: Add hover and active states",
+      "Step 5: Apply to all buttons (resume download, navigation links, etc.)"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Test site thoroughly with keyboard navigation",
+    "steps": [
+      "Step 1: Navigate site using only Tab key",
+      "Step 2: Verify all links and buttons are reachable",
+      "Step 3: Verify focus states are visible",
+      "Step 4: Test navigation with Enter key",
+      "Step 5: Verify skip links or focus management work correctly"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Run Lighthouse audit and achieve score > 90",
+    "steps": [
+      "Step 1: Build production version of site",
+      "Step 2: Run Lighthouse in Chrome DevTools",
+      "Step 3: Check Performance score",
+      "Step 4: Check Accessibility score",
+      "Step 5: Check Best Practices score",
+      "Step 6: Check SEO score",
+      "Step 7: Address any issues to reach >90 in all categories"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create comprehensive documentation in README for content updates",
+    "steps": [
+      "Step 1: Document how to add a new blog post",
+      "Step 2: Document frontmatter schema for posts",
+      "Step 3: Document how to update About and Now pages",
+      "Step 4: Document build and deploy process",
+      "Step 5: Verify README is clear and complete"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Test site in multiple browsers (Chrome, Firefox, Safari)",
+    "steps": [
+      "Step 1: Test site in Chrome",
+      "Step 2: Test site in Firefox",
+      "Step 3: Test site in Safari (if available)",
+      "Step 4: Verify theme toggle works in all browsers",
+      "Step 5: Verify navigation and routing work in all browsers",
+      "Step 6: Document any browser-specific issues"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create example About page content",
+    "steps": [
+      "Step 1: Write compelling personal story for About page",
+      "Step 2: Include sections: Short Version, Longer Story, What I Do, Outside Work, Values",
+      "Step 3: Add contact info and social links",
+      "Step 4: Review for tone (warm and personal, not corporate)",
+      "Step 5: Verify content displays correctly on /about"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create example Now page content",
+    "steps": [
+      "Step 1: Write current status for Now page",
+      "Step 2: Include sections: Work, Learning, Reading, Building, Life",
+      "Step 3: Add last updated date and current location",
+      "Step 4: Link to nownownow.com explanation",
+      "Step 5: Verify content displays correctly on /now"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create sample blog posts demonstrating different content types",
+    "steps": [
+      "Step 1: Create technical tutorial blog post with code examples",
+      "Step 2: Create personal reflection/thoughts post",
+      "Step 3: Create project showcase post",
+      "Step 4: Verify all posts display correctly",
+      "Step 5: Verify syntax highlighting works in technical post"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Verify contact links work on About/Work pages",
+    "steps": [
+      "Step 1: Add email link (mailto:)",
+      "Step 2: Add GitHub link",
+      "Step 3: Add LinkedIn link",
+      "Step 4: Add any other social media links",
+      "Step 5: Verify all links open correctly"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Ensure visual hierarchy is clear on all pages",
+    "steps": [
+      "Step 1: Check heading sizes create clear hierarchy (h1 > h2 > h3)",
+      "Step 2: Verify primary actions are visually prominent",
+      "Step 3: Verify supporting content is visually secondary",
+      "Step 4: Take screenshots of each page",
+      "Step 5: Verify information hierarchy is immediately clear"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Set up proper error boundaries for React components",
+    "steps": [
+      "Step 1: Create ErrorBoundary component",
+      "Step 2: Wrap main app in ErrorBoundary",
+      "Step 3: Display friendly error message on crash",
+      "Step 4: Test by intentionally throwing error",
+      "Step 5: Verify error boundary catches and displays fallback UI"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Verify all images have proper alt text for accessibility",
+    "steps": [
+      "Step 1: Identify all images on site",
+      "Step 2: Add descriptive alt text to each image",
+      "Step 3: Test with screen reader (if available)",
+      "Step 4: Verify images are meaningful or decorative as appropriate",
+      "Step 5: Run accessibility audit"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Implement proper heading hierarchy for accessibility",
+    "steps": [
+      "Step 1: Audit all pages for heading levels",
+      "Step 2: Ensure h1 is used once per page for main title",
+      "Step 3: Ensure headings don't skip levels (h2 after h1, not h3)",
+      "Step 4: Run accessibility audit",
+      "Step 5: Verify heading structure is logical and accessible"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Add loading states for asynchronous content",
+    "steps": [
+      "Step 1: Add loading spinner/skeleton for blog post loading",
+      "Step 2: Add loading state for blog index",
+      "Step 3: Style loading states to match theme",
+      "Step 4: Test on slow connection or with throttling",
+      "Step 5: Verify loading states display before content"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Complete end-to-end test: user journey from home to reading blog post",
+    "steps": [
+      "Step 1: Start at home page (/)",
+      "Step 2: Click on a recent post preview",
+      "Step 3: Read full blog post",
+      "Step 4: Click tag to filter posts",
+      "Step 5: Navigate to another post",
+      "Step 6: Click 'Back to Blog' to return to index",
+      "Step 7: Navigate to About page",
+      "Step 8: Navigate to Work page",
+      "Step 9: Verify entire journey feels cohesive and pleasant"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Complete end-to-end test: theme persistence across navigation",
+    "steps": [
+      "Step 1: Start on home page with default theme",
+      "Step 2: Toggle to opposite theme",
+      "Step 3: Navigate to About page",
+      "Step 4: Verify theme persisted",
+      "Step 5: Navigate to Blog page",
+      "Step 6: Verify theme persisted",
+      "Step 7: Refresh page",
+      "Step 8: Verify theme still persisted after refresh"
+    ],
+    "passes": false
+  },
+  {
+    "category": "style",
+    "description": "Final visual polish: verify site feels cozy and personal throughout",
+    "steps": [
+      "Step 1: Review all pages for warm color scheme (not cold/corporate)",
+      "Step 2: Verify generous whitespace and breathing room",
+      "Step 3: Verify typography feels personal and comfortable",
+      "Step 4: Verify interactions (hovers, clicks) feel smooth",
+      "Step 5: Verify overall aesthetic is 'cozy digital home' not 'corporate portfolio'",
+      "Step 6: Get feedback from user on cozy feel"
+    ],
+    "passes": false
+  }
+]
