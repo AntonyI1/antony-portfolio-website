@@ -1,0 +1,36 @@
+.about {
+  padding: 2rem 0;
+}
+
+.about section {
+  margin-bottom: var(--spacing-section);
+}
+
+.about section:last-of-type {
+  margin-bottom: 0;
+}
+
+.contact-links {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.contact-links a {
+  color: var(--accent-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-links a:hover {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .contact-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,20 @@
+.blog {
+  padding: 2rem 0;
+}
+
+.blog-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.blog-empty-state p {
+  color: var(--text-secondary);
+}
+
+.blog-empty-state .text-muted {
+  color: var(--text-muted);
+  font-style: italic;
+}

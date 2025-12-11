@@ -1,0 +1,23 @@
+.now {
+  padding: 2rem 0;
+}
+
+.now-meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.now section {
+  margin-bottom: var(--spacing-section);
+}
+
+.now section:last-of-type {
+  margin-bottom: 0;
+}
+
+.now ul {
+  color: var(--text-secondary);
+}
