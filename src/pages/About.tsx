@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react';
 import { loadPageContent, type PageContent } from '../lib/content';
+import { useMetaTags } from '../hooks/useMetaTags';
 import './About.css';
 
 export function About() {
   const [content, setContent] = useState<PageContent | null>(null);
   const [loading, setLoading] = useState(true);
+
+  useMetaTags({
+    title: 'About',
+    description: 'Learn more about Antony Ibrahim - software engineer, AI enthusiast, and builder of delightful web experiences.',
+    url: 'https://antony-ibrahim.dev/about',
+    type: 'website'
+  });
 
   useEffect(() => {
     loadPageContent('about')

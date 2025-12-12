@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom';
 import { RecentPosts } from '../components/home/RecentPosts';
+import { useMetaTags } from '../hooks/useMetaTags';
 import './Home.css';
 
 export function Home() {
+  useMetaTags({
+    title: 'Home',
+    description: 'Software engineer building AI-powered tools and crafting delightful web experiences. Based in Orange County, California.',
+    url: 'https://antony-ibrahim.dev',
+    type: 'website'
+  });
+
   return (
     <div className="home page-transition">
       <section className="hero">

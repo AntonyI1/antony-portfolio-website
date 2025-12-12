@@ -1,12 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { loadBlogPosts, formatDate, type BlogPost } from '../lib/content';
+import { useMetaTags } from '../hooks/useMetaTags';
 import './Blog.css';
 
 export function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
+  useMetaTags({
+    title: 'Blog',
+    description: 'Thoughts on software engineering, AI, web development, and technology.',
+    url: 'https://antony-ibrahim.dev/blog',
+    type: 'website'
+  });
 
   useEffect(() => {
     loadBlogPosts()

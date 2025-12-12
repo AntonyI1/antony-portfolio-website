@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react';
 import { loadPageContent, type PageContent } from '../lib/content';
+import { useMetaTags } from '../hooks/useMetaTags';
 import './Now.css';
 
 export function Now() {
   const [content, setContent] = useState<PageContent | null>(null);
   const [loading, setLoading] = useState(true);
+
+  useMetaTags({
+    title: 'Now',
+    description: "What Antony Ibrahim is currently working on, learning, and building. Updated regularly.",
+    url: 'https://antony-ibrahim.dev/now',
+    type: 'website'
+  });
 
   useEffect(() => {
     loadPageContent('now')

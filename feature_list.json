@@ -469,7 +469,7 @@
       "Step 4: Add Open Graph tags for social sharing",
       "Step 5: Verify page titles update when navigating between routes"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

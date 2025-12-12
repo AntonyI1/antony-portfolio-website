@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { loadBlogPost, formatDate, estimateReadingTime, type BlogPost as BlogPostType } from '../lib/content';
+import { useMetaTags } from '../hooks/useMetaTags';
 import './BlogPost.css';
 
 export function BlogPost() {
@@ -8,6 +9,14 @@ export function BlogPost() {
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  // Set meta tags when post is loaded
+  useMetaTags({
+    title: post?.title || 'Blog Post',
+    description: post?.description || 'Read this blog post by Antony Ibrahim.',
+    url: `https://antony-ibrahim.dev/blog/${slug}`,
+    type: 'article'
+  });
 
   useEffect(() => {
     if (!slug) {

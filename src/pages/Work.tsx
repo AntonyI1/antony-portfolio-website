@@ -2,9 +2,17 @@ import { Timeline } from '../components/work/Timeline';
 import { ProjectCard } from '../components/work/ProjectCard';
 import { Publications } from '../components/work/Publications';
 import { SkillsGrid } from '../components/work/SkillsGrid';
+import { useMetaTags } from '../hooks/useMetaTags';
 import './Work.css';
 
 export function Work() {
+  useMetaTags({
+    title: 'Work',
+    description: 'Professional experience, projects, research publications, and technical skills of Antony Ibrahim - Software Engineer and AI enthusiast.',
+    url: 'https://antony-ibrahim.dev/work',
+    type: 'website'
+  });
+
   return (
     <div className="work page-transition">
       <header className="work-header">
