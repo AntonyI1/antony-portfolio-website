@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { loadPageContent, type PageContent } from '../lib/content';
 import { useMetaTags } from '../hooks/useMetaTags';
+import { Loading } from '../components/common/Loading';
 import './Now.css';
 
 export function Now() {
@@ -24,7 +25,7 @@ export function Now() {
   if (loading) {
     return (
       <div className="now page-transition">
-        <p className="text-muted">Loading...</p>
+        <Loading variant="skeleton" />
       </div>
     );
   }

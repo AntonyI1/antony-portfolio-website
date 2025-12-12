@@ -529,7 +529,7 @@
       "Step 4: Add multiple posts from different years",
       "Step 5: Verify posts are grouped correctly by year"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -712,7 +712,7 @@
       "Step 4: Test on slow connection or with throttling",
       "Step 5: Verify loading states display before content"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

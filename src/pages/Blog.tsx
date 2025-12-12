@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { loadBlogPosts, formatDate, type BlogPost } from '../lib/content';
 import { useMetaTags } from '../hooks/useMetaTags';
 import { Tag } from '../components/common/Tag';
+import { Loading } from '../components/common/Loading';
 import './Blog.css';
 
 export function Blog() {
@@ -34,11 +35,26 @@ export function Blog() {
     ? posts.filter((post) => post.tags.includes(selectedTag))
     : posts;
 
+  // Group posts by year
+  const postsByYear = filteredPosts.reduce((acc, post) => {
+    const year = new Date(post.date).getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  }, {} as Record<number, BlogPost[]>);
+
+  // Sort years in descending order
+  const years = Object.keys(postsByYear)
+    .map(Number)
+    .sort((a, b) => b - a);
+
   if (loading) {
     return (
       <div className="blog page-transition">
         <h1>Blog</h1>
-        <p className="text-muted">Loading posts...</p>
+        <Loading text="Loading posts..." />
       </div>
     );
   }
@@ -85,25 +101,30 @@ export function Blog() {
       )}
 
       <div className="blog-list">
-        {filteredPosts.map((post) => (
-          <article key={post.slug} className="blog-post-card">
-            <Link to={`/blog/${post.slug}`} className="blog-post-link">
-              <h2>{post.title}</h2>
-              <div className="blog-post-meta">
-                <time dateTime={post.date}>{formatDate(post.date)}</time>
-                {post.tags.length > 0 && (
-                  <div className="blog-post-tags">
-                    {post.tags.map((tag) => (
-                      <Tag key={tag}>{tag}</Tag>
-                    ))}
+        {years.map((year) => (
+          <div key={year} className="blog-year-group">
+            <h2 className="blog-year-header">{year}</h2>
+            {postsByYear[year].map((post) => (
+              <article key={post.slug} className="blog-post-card">
+                <Link to={`/blog/${post.slug}`} className="blog-post-link">
+                  <h3>{post.title}</h3>
+                  <div className="blog-post-meta">
+                    <time dateTime={post.date}>{formatDate(post.date)}</time>
+                    {post.tags.length > 0 && (
+                      <div className="blog-post-tags">
+                        {post.tags.map((tag) => (
+                          <Tag key={tag}>{tag}</Tag>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-              {post.description && (
-                <p className="blog-post-description">{post.description}</p>
-              )}
-            </Link>
-          </article>
+                  {post.description && (
+                    <p className="blog-post-description">{post.description}</p>
+                  )}
+                </Link>
+              </article>
+            ))}
+          </div>
         ))}
       </div>
     </div>
