@@ -505,7 +505,7 @@
       "Step 4: Lazy load blog posts",
       "Step 5: Verify build completes without warnings"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

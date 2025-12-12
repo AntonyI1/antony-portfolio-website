@@ -4,7 +4,7 @@
 
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import { codeToHtml } from 'shiki';
+import { createHighlighter } from 'shiki';
 
 export interface BlogPost {
   slug: string;
@@ -38,10 +38,25 @@ export function parseMarkdown(markdownContent: string): {
   };
 }
 
+// Create a shared highlighter instance with only the languages we use
+let highlighterPromise: Promise<any> | null = null;
+
+async function getHighlighter() {
+  if (!highlighterPromise) {
+    highlighterPromise = createHighlighter({
+      themes: ['one-dark-pro'],
+      langs: ['typescript', 'javascript', 'jsx', 'tsx', 'bash', 'json', 'markdown', 'css'],
+    });
+  }
+  return highlighterPromise;
+}
+
 /**
  * Convert markdown to HTML with syntax highlighting
  */
 export async function markdownToHtml(markdown: string): Promise<string> {
+  const highlighter = await getHighlighter();
+
   // Use marked's walkTokens hook to process code blocks with shiki
   marked.use({
     async: true,
@@ -49,7 +64,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
       if (token.type === 'code' && token.lang) {
         try {
           // Use shiki to generate syntax-highlighted HTML
-          const html = await codeToHtml(token.text, {
+          const html = highlighter.codeToHtml(token.text, {
             lang: token.lang,
             theme: 'one-dark-pro', // Warm dark theme
           });
@@ -163,8 +178,8 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
  */
 export async function loadBlogPost(slug: string): Promise<BlogPost | null> {
   try {
-    // Dynamically import the markdown file
-    const module = await import(`/content/blog/${slug}.md?raw`);
+    // Dynamically import the markdown file using relative path
+    const module = await import(`../../content/blog/${slug}.md?raw`);
     const markdownContent = module.default;
     const post = await processBlogPost(slug, markdownContent);
 
@@ -185,7 +200,7 @@ export async function loadBlogPost(slug: string): Promise<BlogPost | null> {
  */
 export async function loadPageContent(pageName: string): Promise<PageContent | null> {
   try {
-    const module = await import(`/content/${pageName}.md?raw`);
+    const module = await import(`../../content/${pageName}.md?raw`);
     const markdownContent = module.default;
     return await processPage(markdownContent);
   } catch (error) {
