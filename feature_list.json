@@ -616,7 +616,7 @@
       "Step 4: Review for tone (warm and personal, not corporate)",
       "Step 5: Verify content displays correctly on /about"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -628,7 +628,7 @@
       "Step 4: Link to nownownow.com explanation",
       "Step 5: Verify content displays correctly on /now"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -640,7 +640,7 @@
       "Step 4: Verify all posts display correctly",
       "Step 5: Verify syntax highlighting works in technical post"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -664,7 +664,7 @@
       "Step 4: Take screenshots of each page",
       "Step 5: Verify information hierarchy is immediately clear"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
