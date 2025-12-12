@@ -1,33 +1,45 @@
+import { Timeline } from '../components/work/Timeline';
+import { ProjectCard } from '../components/work/ProjectCard';
+import { Publications } from '../components/work/Publications';
+import { SkillsGrid } from '../components/work/SkillsGrid';
 import './Work.css';
 
 export function Work() {
   return (
     <div className="work page-transition">
-      <h1>Work & Portfolio</h1>
-
-      <p className="work-intro">
-        Placeholder for professional portfolio content. This will include experience,
-        projects, publications, and skills migrated from the original site.
-      </p>
+      <header className="work-header">
+        <h1>Work & Portfolio</h1>
+        <p className="work-intro">
+          A collection of my professional experience, projects, research, and technical skills.
+        </p>
+        <a
+          href="/Antony_Ibrahim_Resume.pdf"
+          className="button button-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download Resume
+        </a>
+      </header>
 
       <section className="work-section">
-        <h2>Experience</h2>
-        <p className="text-muted">Content coming soon...</p>
+        <h2 className="section-title">Experience</h2>
+        <Timeline />
       </section>
 
       <section className="work-section">
-        <h2>Projects</h2>
-        <p className="text-muted">Content coming soon...</p>
+        <h2 className="section-title">Projects</h2>
+        <ProjectCard />
       </section>
 
       <section className="work-section">
-        <h2>Publications</h2>
-        <p className="text-muted">Content coming soon...</p>
+        <h2 className="section-title">Publications</h2>
+        <Publications />
       </section>
 
       <section className="work-section">
-        <h2>Skills</h2>
-        <p className="text-muted">Content coming soon...</p>
+        <h2 className="section-title">Skills</h2>
+        <SkillsGrid />
       </section>
     </div>
   );
