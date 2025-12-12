@@ -129,7 +129,14 @@ export async function loadBlogPost(slug: string): Promise<BlogPost | null> {
     // Dynamically import the markdown file
     const module = await import(`/content/blog/${slug}.md?raw`);
     const markdownContent = module.default;
-    return await processBlogPost(slug, markdownContent);
+    const post = await processBlogPost(slug, markdownContent);
+
+    // Return null for draft posts in production (show 404)
+    if (post.draft && !import.meta.env.DEV) {
+      return null;
+    }
+
+    return post;
   } catch (error) {
     console.error(`Error loading blog post ${slug}:`, error);
     return null;

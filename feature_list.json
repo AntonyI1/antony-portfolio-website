@@ -481,7 +481,7 @@
       "Step 4: Create test draft post",
       "Step 5: Verify draft post doesn't appear in blog index"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
