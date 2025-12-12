@@ -6,6 +6,7 @@ import './Blog.css';
 export function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   useEffect(() => {
     loadBlogPosts()
@@ -13,6 +14,16 @@ export function Blog() {
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
+
+  // Extract unique tags from all posts
+  const allTags = Array.from(
+    new Set(posts.flatMap((post) => post.tags))
+  ).sort();
+
+  // Filter posts by selected tag
+  const filteredPosts = selectedTag
+    ? posts.filter((post) => post.tags.includes(selectedTag))
+    : posts;
 
   if (loading) {
     return (
@@ -44,8 +55,28 @@ export function Blog() {
         </p>
       </header>
 
+      {allTags.length > 0 && (
+        <div className="tag-filter">
+          <button
+            className={`filter-tag ${selectedTag === null ? 'active' : ''}`}
+            onClick={() => setSelectedTag(null)}
+          >
+            All Posts
+          </button>
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              className={`filter-tag ${selectedTag === tag ? 'active' : ''}`}
+              onClick={() => setSelectedTag(tag)}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="blog-list">
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <article key={post.slug} className="blog-post-card">
             <Link to={`/blog/${post.slug}`} className="blog-post-link">
               <h2>{post.title}</h2>

@@ -270,7 +270,7 @@
       "Step 4: Add 'Clear filters' or 'All posts' option",
       "Step 5: Verify clicking tag filters posts correctly"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -304,7 +304,7 @@
       "Step 4: Verify link appears at bottom of blog posts",
       "Step 5: Verify clicking link navigates back to blog index"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

@@ -1,0 +1,627 @@
+# App Spec: Antony Ibrahim Personal Website v2
+
+## Overview
+
+Transform the current portfolio/resume website into a **cozy, personal digital home** that showcases who you are beyond just professional achievements. The site should feel warm and inviting while remaining functional and easy to update.
+
+**Live URL:** https://antony-ibrahim.dev
+**Tech Stack:** React 19 + TypeScript + Vite + Cloudflare Workers
+
+---
+
+## Development Workflow
+
+### Branch Strategy
+
+All changes for this redesign must be made on a **separate feature branch** - never directly on `main`.
+
+```bash
+# Create and work on feature branch
+git checkout -b cozy-redesign
+
+# All commits go here until ready for review
+```
+
+### Git Configuration
+
+**Author:** Antonyi1
+**Email:** Antonyibrahim0@gmail.com
+
+```bash
+# Ensure correct author for this repo
+git config user.name "Antonyi1"
+git config user.email "Antonyibrahim0@gmail.com"
+```
+
+### Commit Guidelines
+
+- Commits authored by **Antonyi1 <Antonyibrahim0@gmail.com>**
+- No AI/Claude mentions in commit messages
+- No co-authored-by tags
+- Clear, descriptive commit messages
+
+### Review Process
+
+1. All work stays on `cozy-redesign` branch
+2. Branch is **not** merged to main automatically
+3. You review the changes and decide if you like them
+4. Deploy preview from branch if needed (`wrangler deploy --branch cozy-redesign`)
+5. Merge to main only when satisfied
+
+---
+
+## Current State
+
+- Single-page React app with all content hardcoded in `App.tsx`
+- Sections: Home, Experience, Publications, Projects, Skills, Contact
+- Dark theme with cyan/purple accents
+- No content management - requires code changes to update
+- ~1000 lines of CSS, monolithic component structure
+
+---
+
+## Goals
+
+1. **More Personal & Cozy** - Warm design that feels like visiting someone's home, not a corporate resume
+2. **About Me Page** - Deeper personal content beyond professional achievements
+3. **Now Page** - What you're currently focused on, reading, building, learning
+4. **Blog Section** - Space to write thoughts, learnings, and share ideas
+5. **Easy Content Updates** - Add blog posts and update pages without touching React components
+6. **Keep Existing Resume Features** - Experience, projects, skills, publications remain accessible
+
+---
+
+## Site Architecture
+
+### Pages & Routes
+
+```
+/                    -> Home (hero + brief intro + recent posts)
+/about               -> About Me (personal story, interests, values)
+/now                 -> Now Page (current focus, what I'm up to)
+/blog                -> Blog Index (list of all posts)
+/blog/:slug          -> Individual Blog Post
+/work                -> Work/Portfolio (experience, projects, publications, skills)
+/resume              -> PDF download redirect
+```
+
+### Navigation
+
+```
+[Home]  [About]  [Now]  [Blog]  [Work]  [Theme Toggle]
+```
+
+---
+
+## Content Management System
+
+### File-Based Content (Markdown)
+
+Create a `/content` directory for easy content updates:
+
+```
+content/
+├── about.md              # About Me page content
+├── now.md                # Now page content (update frequently)
+└── blog/
+    ├── 2025-01-15-first-post.md
+    ├── 2025-02-20-learning-rust.md
+    └── ...
+```
+
+### Markdown Frontmatter Schema
+
+**Blog Posts (`content/blog/*.md`):**
+```yaml
+---
+title: "My First Blog Post"
+date: 2025-01-15
+description: "A short description for previews and SEO"
+tags: ["thoughts", "programming", "life"]
+draft: false
+---
+
+Blog content in markdown...
+```
+
+**About Page (`content/about.md`):**
+```yaml
+---
+title: "About Me"
+lastUpdated: 2025-01-01
+---
+
+Content...
+```
+
+**Now Page (`content/now.md`):**
+```yaml
+---
+title: "What I'm Up To Now"
+lastUpdated: 2025-12-10
+location: "Orange County, CA"
+---
+
+Content...
+```
+
+### Build-Time Content Processing
+
+- Use Vite plugin or build script to process markdown at build time
+- Generate JSON manifest of all blog posts for index page
+- Convert markdown to HTML with syntax highlighting for code blocks
+- No runtime markdown parsing (static generation for performance)
+
+---
+
+## Design System: "Cozy" Theme
+
+### Philosophy
+
+Move from "professional portfolio" aesthetic to "personal digital home":
+- Warmer colors instead of cold cyan/purple
+- More whitespace and breathing room
+- Softer shadows and rounded corners
+- Typography that feels personal (consider serif fonts for body text)
+- Subtle paper/texture backgrounds (optional)
+
+### Color Palette (Dark Mode - Default)
+
+```css
+/* Warm neutrals */
+--bg-primary: #1a1814;        /* Warm black, slight brown tint */
+--bg-secondary: #252118;      /* Warm dark surface */
+--bg-card: #2d2820;           /* Card backgrounds */
+
+/* Text */
+--text-primary: #f5f0e8;      /* Warm off-white */
+--text-secondary: #a89f94;    /* Muted warm gray */
+--text-muted: #6b6359;        /* Subtle text */
+
+/* Accent - warm amber/orange */
+--accent-primary: #e8a854;    /* Warm amber */
+--accent-secondary: #c9844a;  /* Burnt orange */
+--accent-glow: rgba(232, 168, 84, 0.15);
+
+/* Semantic */
+--border: #3d352c;
+--link: #e8a854;
+--link-hover: #f4c076;
+```
+
+### Color Palette (Light Mode)
+
+```css
+--bg-primary: #faf8f5;        /* Warm cream */
+--bg-secondary: #f0ebe3;      /* Light warm gray */
+--bg-card: #ffffff;
+
+--text-primary: #2d2820;
+--text-secondary: #5c544a;
+--text-muted: #8a8279;
+
+--accent-primary: #c9844a;
+--accent-secondary: #a66b3a;
+```
+
+### Typography
+
+```css
+/* Consider a warmer, more personal font stack */
+--font-heading: 'Fraunces', 'Georgia', serif;
+--font-body: 'Inter', 'system-ui', sans-serif;
+--font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+/* Sizes with better reading experience */
+--text-base: 1.125rem;        /* 18px base for comfortable reading */
+--text-lg: 1.25rem;
+--text-xl: 1.5rem;
+--text-2xl: 2rem;
+--text-3xl: 2.5rem;
+
+--line-height-body: 1.7;      /* Generous line height */
+--max-width-prose: 65ch;      /* Optimal reading width */
+```
+
+### Spacing & Layout
+
+```css
+--spacing-page: 2rem;         /* Page padding */
+--spacing-section: 4rem;      /* Between sections */
+--border-radius: 12px;        /* Softer corners */
+--shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+```
+
+---
+
+## Page Specifications
+
+### Home Page (`/`)
+
+**Purpose:** Welcoming landing page that gives a sense of who you are
+
+**Sections:**
+1. **Hero**
+   - Warm greeting: "Hey, I'm Antony"
+   - Brief tagline (1-2 sentences about what you do/care about)
+   - Profile photo (optional but adds warmth)
+   - Quick links: [About Me] [See My Work]
+
+2. **Recent Posts** (if blog has posts)
+   - "Recent Writing" or "Lately on my mind"
+   - Show 3 most recent blog posts with title, date, description
+   - Link to full blog
+
+3. **Quick Links / Highlights**
+   - Current status from Now page (e.g., "Currently: Building AI tools at StartGuides")
+   - Link to Now page for more
+
+**Remove from Home:**
+- Remove the aggressive typewriter effect (feels corporate)
+- Remove mouse follower (distracting, not cozy)
+
+### About Page (`/about`)
+
+**Purpose:** Deep dive into who you are as a person
+
+**Suggested Content Sections:**
+```markdown
+# About Me
+
+## The Short Version
+[2-3 sentences - elevator pitch]
+
+## The Longer Story
+[Personal narrative - where you're from, your journey, what drives you]
+
+## What I Do
+[Professional summary - AI/software engineering focus]
+
+## Outside of Work
+[Hobbies, interests, what you do for fun]
+
+## Values & Beliefs
+[What matters to you, your approach to work/life]
+
+## Fun Facts
+[Quirky things that make you human]
+
+## Get in Touch
+[Email, social links]
+```
+
+### Now Page (`/now`)
+
+**Purpose:** Living document of what you're currently focused on (inspired by nownownow.com)
+
+**Suggested Content Structure:**
+```markdown
+# What I'm Up To Now
+
+*Last updated: December 10, 2025*
+*Location: Orange County, CA*
+
+## Work
+[Current role, what you're building]
+
+## Learning
+[What you're studying, courses, books]
+
+## Reading
+[Current books, articles]
+
+## Building
+[Side projects you're working on]
+
+## Life
+[Personal updates - moving, travel, life events]
+```
+
+**Update Cadence:** Monthly or when significant changes happen
+
+### Blog Page (`/blog`)
+
+**Purpose:** Index of all blog posts
+
+**Layout:**
+- Simple chronological list (newest first)
+- Each entry shows: Title, Date, Description, Tags
+- Optional: Filter by tag
+- Optional: Year groupings for archive feel
+
+**Design:**
+- Clean, readable
+- Generous spacing between entries
+- Tags as subtle pills/badges
+
+### Blog Post Page (`/blog/:slug`)
+
+**Purpose:** Individual blog post reading experience
+
+**Layout:**
+1. **Header**
+   - Title
+   - Date published
+   - Tags
+   - Estimated reading time
+
+2. **Content**
+   - Prose with max-width for readability (~65ch)
+   - Proper heading hierarchy
+   - Code blocks with syntax highlighting
+   - Image support with captions
+   - Blockquotes styled nicely
+
+3. **Footer**
+   - Back to blog link
+   - Previous/Next post navigation (optional)
+   - Share links (optional)
+
+### Work Page (`/work`)
+
+**Purpose:** Professional portfolio - migrate existing resume content here
+
+**Sections:**
+1. **Experience Timeline** (from current site)
+2. **Projects** (from current site)
+3. **Publications** (from current site)
+4. **Skills** (from current site)
+5. **Resume Download** button
+
+Keep the existing functionality but apply the new cozy design system.
+
+---
+
+## Component Structure
+
+Refactor from monolithic `App.tsx` to modular components:
+
+```
+src/
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx         # Navigation
+│   │   ├── Footer.tsx         # Site footer
+│   │   └── Layout.tsx         # Page wrapper
+│   ├── common/
+│   │   ├── ThemeToggle.tsx
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── Tag.tsx
+│   ├── home/
+│   │   ├── Hero.tsx
+│   │   └── RecentPosts.tsx
+│   ├── blog/
+│   │   ├── BlogList.tsx
+│   │   ├── BlogPost.tsx
+│   │   └── PostCard.tsx
+│   └── work/
+│       ├── Timeline.tsx
+│       ├── ProjectCard.tsx
+│       └── SkillsGrid.tsx
+├── pages/
+│   ├── Home.tsx
+│   ├── About.tsx
+│   ├── Now.tsx
+│   ├── Blog.tsx
+│   ├── BlogPost.tsx
+│   └── Work.tsx
+├── content/                   # Markdown content (processed at build)
+├── hooks/
+│   ├── useTheme.ts
+│   └── useBlogPosts.ts
+├── styles/
+│   ├── globals.css
+│   ├── variables.css
+│   └── typography.css
+├── lib/
+│   └── content.ts             # Content loading utilities
+└── App.tsx                    # Router setup
+```
+
+---
+
+## Routing
+
+Use **React Router** (react-router-dom) for client-side routing:
+
+```tsx
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/now" element={<Now />} />
+    <Route path="/blog" element={<Blog />} />
+    <Route path="/blog/:slug" element={<BlogPost />} />
+    <Route path="/work" element={<Work />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+</BrowserRouter>
+```
+
+Cloudflare Workers already configured for SPA routing (`not_found_handling: "single-page-application"`).
+
+---
+
+## Content Pipeline
+
+### Option A: Build-Time Processing (Recommended)
+
+1. **Vite Plugin** processes markdown files during build
+2. Generates:
+   - `dist/content/about.json`
+   - `dist/content/now.json`
+   - `dist/content/blog/index.json` (manifest)
+   - `dist/content/blog/[slug].json` (individual posts)
+3. React app fetches JSON at runtime
+4. No markdown parsing in browser
+
+**Recommended Tools:**
+- `gray-matter` - Parse frontmatter
+- `marked` or `remark` - Markdown to HTML
+- `shiki` or `prism` - Syntax highlighting
+
+### Option B: Import at Build Time
+
+Use Vite's import.meta.glob to import markdown files directly:
+
+```tsx
+const posts = import.meta.glob('/content/blog/*.md', { eager: true, as: 'raw' });
+```
+
+Process during build, no runtime fetching.
+
+---
+
+## New Dependencies
+
+```json
+{
+  "dependencies": {
+    "react-router-dom": "^7.x"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.x",
+    "marked": "^15.x",
+    "shiki": "^1.x"
+  }
+}
+```
+
+---
+
+## Migration Strategy
+
+### Phase 1: Foundation
+1. Create `cozy-redesign` branch
+2. Add React Router
+3. Set up new component structure
+4. Create Layout component with new navigation
+5. Implement theme system with warm colors
+
+### Phase 2: New Pages
+1. Create About page with placeholder content
+2. Create Now page with placeholder content
+3. Create Blog index page (empty state)
+4. Create Work page (migrate existing content)
+
+### Phase 3: Content System
+1. Set up `/content` directory
+2. Create markdown processing pipeline
+3. Implement blog post rendering
+4. Add syntax highlighting
+
+### Phase 4: Polish
+1. Refine typography and spacing
+2. Add transitions between pages
+3. Mobile optimization
+4. Performance optimization
+5. SEO meta tags per page
+
+---
+
+## Content You'll Need to Write
+
+### About Page
+- Your story (where you grew up, journey to tech)
+- What drives you professionally
+- Interests outside work
+- Values/approach to engineering
+
+### Now Page
+- What you're working on at StartGuides
+- Side projects
+- What you're learning
+- Books/content you're consuming
+
+### First Blog Post Ideas
+- "Why I built this site"
+- "What I learned building [project]"
+- "My journey from [X] to AI Engineering"
+- "Tools I use daily"
+
+---
+
+## Example Content Files
+
+### `/content/about.md`
+```markdown
+---
+title: "About Me"
+lastUpdated: 2025-12-01
+---
+
+# Hey, I'm Antony
+
+I'm a software engineer based in Orange County, California, currently building AI-powered tools at StartGuides.
+
+## My Story
+
+[Your personal narrative here...]
+
+## What I'm Into
+
+When I'm not coding, you'll find me [hobbies, interests]...
+```
+
+### `/content/now.md`
+```markdown
+---
+title: "Now"
+lastUpdated: 2025-12-10
+location: "Orange County, CA"
+---
+
+# What I'm Up To Now
+
+This is my [now page](https://nownownow.com/about) - a snapshot of what I'm focused on at this point in my life.
+
+## Work
+
+Building AI agent workflows at StartGuides...
+
+## Learning
+
+Currently diving deeper into...
+
+## Reading
+
+- [Book title] by [Author]
+- [Article/Blog]
+```
+
+### `/content/blog/2025-01-15-hello-world.md`
+```markdown
+---
+title: "Hello World"
+date: 2025-01-15
+description: "Welcome to my corner of the internet"
+tags: ["personal", "meta"]
+draft: false
+---
+
+Welcome to my blog! This is where I'll share...
+```
+
+---
+
+## Success Metrics
+
+- **Cozy Feel:** Site feels warm and personal, not corporate
+- **Easy Updates:** Can add a blog post in < 5 minutes
+- **Performance:** Lighthouse score > 90
+- **Readability:** Blog posts are comfortable to read
+- **Personal Touch:** Visitors feel like they know you after browsing
+
+---
+
+## Out of Scope (For Now)
+
+- Comments on blog posts
+- Newsletter signup
+- RSS feed
+- Search functionality
+- Analytics dashboard
+- CMS admin interface
+
+These can be added later if needed.
