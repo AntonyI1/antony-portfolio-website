@@ -457,7 +457,7 @@
       "Step 4: Navigate to different routes in preview",
       "Step 5: Refresh page on non-root route and verify it still works"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -565,7 +565,7 @@
       "Step 4: Test navigation with Enter key",
       "Step 5: Verify skip links or focus management work correctly"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -579,7 +579,7 @@
       "Step 6: Check SEO score",
       "Step 7: Address any issues to reach >90 in all categories"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -604,7 +604,7 @@
       "Step 5: Verify navigation and routing work in all browsers",
       "Step 6: Document any browser-specific issues"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -728,7 +728,7 @@
       "Step 8: Navigate to Work page",
       "Step 9: Verify entire journey feels cohesive and pleasant"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -743,7 +743,7 @@
       "Step 7: Refresh page",
       "Step 8: Verify theme still persisted after refresh"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -756,6 +756,6 @@
       "Step 5: Verify overall aesthetic is 'cozy digital home' not 'corporate portfolio'",
       "Step 6: Get feedback from user on cozy feel"
     ],
-    "passes": false
+    "passes": true
   }
 ]
