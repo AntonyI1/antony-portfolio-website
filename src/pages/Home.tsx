@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import { RecentPosts } from '../components/home/RecentPosts';
 import { CurrentStatus } from '../components/home/CurrentStatus';
+import { Button } from '../components/common/Button';
 import { useMetaTags } from '../hooks/useMetaTags';
 import './Home.css';
 
@@ -21,12 +21,12 @@ export function Home() {
           delightful web experiences. Currently based in Orange County, California.
         </p>
         <div className="hero-actions">
-          <Link to="/about" className="button button-primary">
+          <Button to="/about" variant="primary">
             About Me
-          </Link>
-          <Link to="/work" className="button button-secondary">
+          </Button>
+          <Button to="/work" variant="secondary">
             See My Work
-          </Link>
+          </Button>
         </div>
       </section>
 

@@ -553,7 +553,7 @@
       "Step 4: Add hover and active states",
       "Step 5: Apply to all buttons (resume download, navigation links, etc.)"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

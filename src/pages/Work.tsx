@@ -2,6 +2,7 @@ import { Timeline } from '../components/work/Timeline';
 import { ProjectCard } from '../components/work/ProjectCard';
 import { Publications } from '../components/work/Publications';
 import { SkillsGrid } from '../components/work/SkillsGrid';
+import { Button } from '../components/common/Button';
 import { useMetaTags } from '../hooks/useMetaTags';
 import './Work.css';
 
@@ -20,14 +21,12 @@ export function Work() {
         <p className="work-intro">
           A collection of my professional experience, projects, research, and technical skills.
         </p>
-        <a
+        <Button
           href="/Antony_Ibrahim_Resume.pdf"
-          className="button button-primary"
-          target="_blank"
-          rel="noopener noreferrer"
+          variant="primary"
         >
           Download Resume
-        </a>
+        </Button>
       </header>
 
       <section className="work-section">
