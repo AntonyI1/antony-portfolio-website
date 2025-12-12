@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { RecentPosts } from '../components/home/RecentPosts';
+import { CurrentStatus } from '../components/home/CurrentStatus';
 import { useMetaTags } from '../hooks/useMetaTags';
 import './Home.css';
 
@@ -31,16 +32,7 @@ export function Home() {
 
       <RecentPosts />
 
-      <section className="home-highlights">
-        <h2>What I'm Up To</h2>
-        <p className="highlight-text">
-          Currently building AI agent workflows at StartGuides, exploring the intersection
-          of developer experience and artificial intelligence.
-        </p>
-        <Link to="/now" className="highlight-link">
-          Read more on my Now page →
-        </Link>
-      </section>
+      <CurrentStatus />
     </div>
   );
 }
