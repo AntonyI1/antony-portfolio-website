@@ -517,7 +517,7 @@
       "Step 4: Navigate to non-existent blog post slug",
       "Step 5: Verify error message displays instead of crash"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -676,7 +676,7 @@
       "Step 4: Test by intentionally throwing error",
       "Step 5: Verify error boundary catches and displays fallback UI"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
