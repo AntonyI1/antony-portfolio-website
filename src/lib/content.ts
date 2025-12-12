@@ -4,6 +4,7 @@
 
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import { codeToHtml } from 'shiki';
 
 export interface BlogPost {
   slug: string;
@@ -38,10 +39,46 @@ export function parseMarkdown(markdownContent: string): {
 }
 
 /**
- * Convert markdown to HTML
+ * Convert markdown to HTML with syntax highlighting
  */
 export async function markdownToHtml(markdown: string): Promise<string> {
-  const html = await marked(markdown);
+  // Use marked's walkTokens hook to process code blocks with shiki
+  marked.use({
+    async: true,
+    walkTokens: async (token) => {
+      if (token.type === 'code' && token.lang) {
+        try {
+          // Use shiki to generate syntax-highlighted HTML
+          const html = await codeToHtml(token.text, {
+            lang: token.lang,
+            theme: 'one-dark-pro', // Warm dark theme
+          });
+          // Store the highlighted HTML
+          (token as any).highlightedCode = html;
+        } catch (error) {
+          console.error(`Error highlighting code with language ${token.lang}:`, error);
+        }
+      }
+    },
+  });
+
+  // Configure renderer to use the pre-highlighted code
+  const renderer = new marked.Renderer();
+  renderer.code = ({ text, lang }: any) => {
+    // If we have pre-highlighted code, use it
+    if ((arguments[0] as any).highlightedCode) {
+      return (arguments[0] as any).highlightedCode;
+    }
+    // Fallback to default rendering
+    if (lang) {
+      return `<pre><code class="language-${lang}">${text}</code></pre>`;
+    }
+    return `<pre><code>${text}</code></pre>`;
+  };
+
+  marked.use({ renderer });
+
+  const html = await marked.parse(markdown);
   return html;
 }
 

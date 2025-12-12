@@ -362,7 +362,7 @@
       "Step 4: Add copy button to code blocks (optional)",
       "Step 5: Verify code is readable with proper highlighting"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
