@@ -76,3 +76,46 @@
   border-top: 1px solid var(--border);
   margin: 3rem 0;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .now {
+    padding: 1rem 0;
+  }
+
+  .now-meta {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .now .prose h1 {
+    font-size: 2rem;
+  }
+
+  .now .prose h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .now .prose h3 {
+    font-size: 1.25rem;
+  }
+
+  .now .prose ul {
+    padding-left: 1.5rem;
+  }
+
+  .now .prose hr {
+    margin: 2rem 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .now .prose h1 {
+    font-size: 1.75rem;
+  }
+
+  .now .prose h2 {
+    font-size: 1.35rem;
+  }
+}

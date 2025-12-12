@@ -85,12 +85,41 @@
 }
 
 /* Responsive design */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  .recent-posts {
+    margin-top: 2.5rem;
+  }
+
+  .recent-posts h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .recent-post-title {
+    font-size: 1.25rem;
+  }
+
+  .see-all-link {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 769px) {
   .recent-posts-list {
     gap: 2rem;
   }
 
   .recent-post-card {
     padding: 2rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .recent-posts h2 {
+    font-size: 1.5rem;
+  }
+
+  .recent-post-title {
+    font-size: 1.15rem;
   }
 }

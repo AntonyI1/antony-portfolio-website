@@ -196,12 +196,30 @@
 }
 
 @media (max-width: 768px) {
+  .blog-post {
+    padding: 1rem 0;
+  }
+
   .post-article {
     padding: 2rem 1.5rem;
   }
 
+  .post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
   .post-title {
     font-size: 2rem;
+  }
+
+  .post-meta {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .prose {
+    font-size: 1rem;
   }
 
   .prose h1 {
@@ -210,9 +228,55 @@
 
   .prose h2 {
     font-size: 1.5rem;
+    margin-top: 2rem;
   }
 
   .prose h3 {
     font-size: 1.25rem;
+  }
+
+  .prose pre.shiki,
+  .prose pre.shiki code {
+    padding: 1rem;
+    font-size: 0.85em;
+  }
+
+  .prose pre:not(.shiki) {
+    padding: 1rem;
+  }
+
+  .prose blockquote {
+    margin: 1.5rem 0;
+    padding: 0.75rem 1rem;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.5rem;
+  }
+
+  .post-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .post-article {
+    padding: 1.5rem 1rem;
+  }
+
+  .post-title {
+    font-size: 1.75rem;
+  }
+
+  .prose pre.shiki,
+  .prose pre.shiki code {
+    padding: 0.75rem;
+    font-size: 0.8em;
+  }
+
+  .prose pre:not(.shiki) {
+    padding: 0.75rem;
   }
 }

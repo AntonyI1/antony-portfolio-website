@@ -104,3 +104,50 @@ blockquote {
 .prose li {
   margin-bottom: 0.5em;
 }
+
+/* Mobile responsive typography */
+@media (max-width: 768px) {
+  body {
+    font-size: 1rem; /* 16px on mobile for better readability */
+  }
+
+  h1 {
+    font-size: 2rem; /* Reduce from 2.5rem */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* Reduce from 2rem */
+  }
+
+  h3 {
+    font-size: 1.4rem; /* Reduce from 1.5rem */
+  }
+
+  h4 {
+    font-size: 1.15rem; /* Reduce from 1.25rem */
+  }
+
+  pre {
+    padding: 0.75rem;
+    font-size: 0.85em;
+  }
+
+  blockquote {
+    padding-left: 1rem;
+    margin: 1em 0;
+  }
+}
+
+@media (max-width: 375px) {
+  body {
+    font-size: 0.95rem; /* Slightly smaller on very small screens */
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -55,12 +55,34 @@
 }
 
 @media (max-width: 768px) {
+  .home {
+    padding: 1rem 0;
+  }
+
   .hero {
     padding: 2rem 0;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
   }
 
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .home-highlights {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero {
+    padding: 1.5rem 0;
+  }
+
+  .home-highlights {
+    padding: 1rem;
   }
 }

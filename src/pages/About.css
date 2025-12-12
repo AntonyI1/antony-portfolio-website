@@ -58,3 +58,37 @@
   color: var(--text-primary);
   font-weight: 600;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .about {
+    padding: 1rem 0;
+  }
+
+  .about .prose h1 {
+    font-size: 2rem;
+  }
+
+  .about .prose h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .about .prose h3 {
+    font-size: 1.25rem;
+  }
+
+  .about .prose ul {
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .about .prose h1 {
+    font-size: 1.75rem;
+  }
+
+  .about .prose h2 {
+    font-size: 1.35rem;
+  }
+}

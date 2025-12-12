@@ -130,7 +130,30 @@
 }
 
 /* Responsive design */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  .timeline-item {
+    padding-left: 2rem;
+  }
+
+  .timeline-content {
+    padding: 1.25rem;
+  }
+
+  .timeline-title {
+    font-size: 1.25rem;
+  }
+
+  .timeline-company {
+    font-size: 1.1rem;
+  }
+
+  .timeline-achievements li {
+    padding-left: 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 769px) {
   .timeline-item {
     padding-left: 3rem;
   }
@@ -143,5 +166,19 @@
     left: -7px;
     width: 16px;
     height: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .timeline-content {
+    padding: 1rem;
+  }
+
+  .timeline-title {
+    font-size: 1.15rem;
+  }
+
+  .timeline-company {
+    font-size: 1rem;
   }
 }
