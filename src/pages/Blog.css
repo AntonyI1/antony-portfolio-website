@@ -23,29 +23,7 @@
   box-shadow: var(--shadow-soft);
 }
 
-.filter-tag {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-secondary);
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.filter-tag:hover {
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
-  background: var(--accent-glow);
-}
-
-.filter-tag.active {
-  border-color: var(--accent-primary);
-  background: var(--accent-primary);
-  color: var(--bg-primary);
-}
+/* Tag filter styles handled by Tag component */
 
 .blog-list {
   display: flex;
@@ -101,16 +79,6 @@
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-}
-
-.tag {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: var(--accent-glow);
-  color: var(--accent-primary);
-  border-radius: 16px;
-  font-size: 0.85rem;
-  font-weight: 500;
 }
 
 .blog-post-description {

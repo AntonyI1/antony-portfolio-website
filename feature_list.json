@@ -386,7 +386,7 @@
       "Step 4: Apply to blog index and blog post pages",
       "Step 5: Verify tags display consistently"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",

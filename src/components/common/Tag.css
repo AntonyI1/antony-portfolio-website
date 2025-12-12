@@ -1,0 +1,28 @@
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tag-clickable {
+  cursor: pointer;
+  border-color: var(--accent-secondary);
+}
+
+.tag-clickable:hover {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  transform: translateY(-1px);
+}
+
+.tag-active {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border-color: var(--accent-primary);
+}

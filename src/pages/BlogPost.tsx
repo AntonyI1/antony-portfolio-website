@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { loadBlogPost, formatDate, estimateReadingTime, type BlogPost as BlogPostType } from '../lib/content';
 import { useMetaTags } from '../hooks/useMetaTags';
+import { Tag } from '../components/common/Tag';
 import './BlogPost.css';
 
 export function BlogPost() {
@@ -85,9 +86,7 @@ export function BlogPost() {
           {post.tags.length > 0 && (
             <div className="post-tags">
               {post.tags.map((tag) => (
-                <span key={tag} className="tag">
-                  {tag}
-                </span>
+                <Tag key={tag}>{tag}</Tag>
               ))}
             </div>
           )}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { loadBlogPosts, formatDate, type BlogPost } from '../lib/content';
 import { useMetaTags } from '../hooks/useMetaTags';
+import { Tag } from '../components/common/Tag';
 import './Blog.css';
 
 export function Blog() {
@@ -65,20 +66,20 @@ export function Blog() {
 
       {allTags.length > 0 && (
         <div className="tag-filter">
-          <button
-            className={`filter-tag ${selectedTag === null ? 'active' : ''}`}
+          <Tag
             onClick={() => setSelectedTag(null)}
+            active={selectedTag === null}
           >
             All Posts
-          </button>
+          </Tag>
           {allTags.map((tag) => (
-            <button
+            <Tag
               key={tag}
-              className={`filter-tag ${selectedTag === tag ? 'active' : ''}`}
               onClick={() => setSelectedTag(tag)}
+              active={selectedTag === tag}
             >
               {tag}
-            </button>
+            </Tag>
           ))}
         </div>
       )}
@@ -93,9 +94,7 @@ export function Blog() {
                 {post.tags.length > 0 && (
                   <div className="blog-post-tags">
                     {post.tags.map((tag) => (
-                      <span key={tag} className="tag">
-                        {tag}
-                      </span>
+                      <Tag key={tag}>{tag}</Tag>
                     ))}
                   </div>
                 )}
