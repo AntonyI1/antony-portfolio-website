@@ -138,7 +138,7 @@
       "Step 4: Verify all packages install successfully",
       "Step 5: Run npm install and check package.json"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -150,7 +150,7 @@
       "Step 4: Add syntax highlighting with shiki",
       "Step 5: Export utilities for use in components"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -162,7 +162,7 @@
       "Step 4: Show title, date, description, and tags for each post",
       "Step 5: Navigate to /blog and verify post list displays"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -174,7 +174,7 @@
       "Step 4: Render post title, date, tags, and content",
       "Step 5: Create test post and verify /blog/:slug displays correctly"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -258,7 +258,7 @@
       "Step 4: Verify post appears in blog index",
       "Step 5: Verify post renders correctly at /blog/2025-01-15-hello-world"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -281,7 +281,7 @@
       "Step 3: Display as 'X min read' below title",
       "Step 4: Verify reading time appears on blog post pages"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

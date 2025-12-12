@@ -1,4 +1,6 @@
 .now {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 2rem 0;
 }
 
@@ -10,14 +12,67 @@
   border-bottom: 1px solid var(--border);
 }
 
-.now section {
-  margin-bottom: var(--spacing-section);
+.now .prose {
+  line-height: var(--line-height-body);
 }
 
-.now section:last-of-type {
-  margin-bottom: 0;
+.now .prose h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
 }
 
-.now ul {
+.now .prose h2 {
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.now .prose h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.now .prose p {
+  margin-bottom: 1.5rem;
   color: var(--text-secondary);
+}
+
+.now .prose a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-glow);
+  text-decoration-thickness: 2px;
+  transition: all 0.2s ease;
+}
+
+.now .prose a:hover {
+  color: var(--link-hover);
+  text-decoration-color: var(--accent-primary);
+}
+
+.now .prose ul {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+  color: var(--text-secondary);
+}
+
+.now .prose li {
+  margin-bottom: 0.75rem;
+}
+
+.now .prose em {
+  font-style: italic;
+}
+
+.now .prose strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.now .prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 3rem 0;
 }

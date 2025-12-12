@@ -16,10 +16,13 @@
     "publish": true
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "hono": "4.8.2",
+    "marked": "^17.0.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-router-dom": "^7.10.1"
+    "react-router-dom": "^7.10.1",
+    "shiki": "^3.19.0"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.7.5",
