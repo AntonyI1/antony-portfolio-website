@@ -422,7 +422,7 @@
       "Step 4: Test blog posts for readability on mobile",
       "Step 5: Test all pages at 375px, 768px, 1024px widths"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",

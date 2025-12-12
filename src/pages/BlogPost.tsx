@@ -48,7 +48,9 @@ export function BlogPost() {
   if (loading) {
     return (
       <div className="blog-post page-transition">
-        <p className="text-muted">Loading post...</p>
+        <div className="post-loading">
+          <p className="loading-spinner">Loading post...</p>
+        </div>
       </div>
     );
   }
@@ -56,11 +58,23 @@ export function BlogPost() {
   if (error || !post) {
     return (
       <div className="blog-post page-transition">
-        <h1>Post Not Found</h1>
-        <p>Sorry, the blog post you're looking for doesn't exist.</p>
-        <Link to="/blog" className="back-link">
-          ← Back to Blog
-        </Link>
+        <div className="post-error">
+          <h1>Post Not Found</h1>
+          <p className="error-description">
+            Sorry, the blog post you're looking for doesn't exist or may have been moved.
+          </p>
+          <div className="error-actions">
+            <Link to="/blog" className="error-link primary">
+              ← Back to Blog
+            </Link>
+            <Link to="/" className="error-link secondary">
+              Go to Home
+            </Link>
+          </div>
+          <p className="error-help">
+            Try browsing all posts or search for something else.
+          </p>
+        </div>
       </div>
     );
   }
