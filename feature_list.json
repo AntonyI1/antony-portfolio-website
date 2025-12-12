@@ -326,7 +326,7 @@
       "Step 3: Add section spacing between major content blocks",
       "Step 4: Verify generous whitespace and breathing room on all pages"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -338,7 +338,7 @@
       "Step 4: Use Card for project cards, blog post previews",
       "Step 5: Verify cards have soft, warm appearance"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -410,7 +410,7 @@
       "Step 4: Style with muted colors and minimal design",
       "Step 5: Verify footer appears on all pages"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
