@@ -1,7 +1,7 @@
 # Antony Ibrahim Portfolio - Current Status
 
 ## Overall Progress
-**36 out of 63 tests passing (57.1%)**
+**39 out of 63 tests passing (61.9%)**
 
 ## What's Working
 
@@ -15,11 +15,12 @@
 ### ✅ Blog System (Fully Functional)
 - Blog index page with all posts
 - Individual blog post pages with slug-based routing
-- Tag filtering on blog index (NEW in Session 4)
+- Tag filtering on blog index
 - Reading time estimation
 - Back to blog navigation
 - Frontmatter support (title, date, description, tags, draft)
-- Three example blog posts created
+- Draft post filtering (NEW in Session 5) - hidden in production, visible in dev
+- Three example blog posts created + one draft post
 
 ### ✅ Content Pages
 - Home page with hero and recent posts
@@ -39,12 +40,22 @@
 - Page transitions (fade-in)
 - Footer with social links
 
+### ✅ SEO & Meta Tags (NEW in Session 5)
+- Dynamic meta tags on all pages
+- Open Graph tags for social sharing
+- Twitter Card support
+- Page-specific titles and descriptions
+- Article type for blog posts
+
 ### ✅ Components Created
 **Layout:**
 - Header with navigation
 - Footer with social links
 - Layout wrapper
 - ThemeToggle
+
+**Common:**
+- Tag component (NEW in Session 5) - reusable for blog tags and filters
 
 **Home:**
 - Hero section
@@ -61,21 +72,21 @@
 - Publications
 - SkillsGrid
 
-## What's Left to Do (27 tests remaining)
+## What's Left to Do (24 tests remaining)
 
 ### High Priority
 1. **Mobile responsive design** - Ensure all pages work on mobile
-2. **SEO meta tags** - Page titles and descriptions
-3. **Draft post filtering** - Hide draft posts in production
+2. **Code syntax highlighting** - Shiki integration for code blocks
+3. **Button component** - Reusable button component for consistency
 4. **Error boundaries** - Graceful error handling
 
 ### Medium Priority
-5. Code syntax highlighting (optional - bundle size concern)
-6. Tag component refactor (make reusable)
-7. Current status on home page
-8. Year groupings in blog index
-9. Keyboard navigation testing
-10. Lighthouse audit
+5. Current status on home page (from Now page)
+6. Year groupings in blog index
+7. Cloudflare Workers SPA routing verification
+8. Keyboard navigation testing
+9. Lighthouse audit
+10. Performance optimization
 
 ### Low Priority (Polish)
 11. README documentation
@@ -133,6 +144,12 @@ content/
 ```
 
 ## Recent Session Highlights
+
+### Session 5 Accomplishments (LATEST)
+1. Implemented SEO meta tags for all pages
+2. Added draft post filtering (hidden in production)
+3. Created reusable Tag component
+4. Marked 3 tests as passing (38→39 total)
 
 ### Session 4 Accomplishments
 1. Implemented tag filtering on blog index
