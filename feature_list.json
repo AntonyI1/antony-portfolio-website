@@ -350,7 +350,7 @@
       "Step 4: Style headings, paragraphs, lists with proper spacing",
       "Step 5: Read a blog post and verify comfortable reading experience"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -374,7 +374,7 @@
       "Step 4: Create test blockquote in blog post",
       "Step 5: Verify blockquotes stand out visually"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -433,7 +433,7 @@
       "Step 3: Ensure transitions feel smooth, not jarring",
       "Step 4: Navigate between pages and verify smooth transitions"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -445,7 +445,7 @@
       "Step 4: Apply to all content links",
       "Step 5: Verify links are visually distinct and responsive to hover"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
