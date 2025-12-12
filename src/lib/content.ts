@@ -28,7 +28,7 @@ export interface PageContent {
  * Parse markdown content with frontmatter
  */
 export function parseMarkdown(markdownContent: string): {
-  frontmatter: Record<string, any>;
+  frontmatter: Record<string, unknown>;
   content: string;
 } {
   const { data, content } = matter(markdownContent);
@@ -39,7 +39,7 @@ export function parseMarkdown(markdownContent: string): {
 }
 
 // Create a shared highlighter instance with only the languages we use
-let highlighterPromise: Promise<any> | null = null;
+let highlighterPromise: ReturnType<typeof createHighlighter> | null = null;
 
 async function getHighlighter() {
   if (!highlighterPromise) {
@@ -69,7 +69,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
             theme: 'one-dark-pro', // Warm dark theme
           });
           // Store the highlighted HTML
-          (token as any).highlightedCode = html;
+          (token as Record<string, unknown>).highlightedCode = html;
         } catch (error) {
           console.error(`Error highlighting code with language ${token.lang}:`, error);
         }
@@ -79,16 +79,16 @@ export async function markdownToHtml(markdown: string): Promise<string> {
 
   // Configure renderer to use the pre-highlighted code
   const renderer = new marked.Renderer();
-  renderer.code = ({ text, lang }: any) => {
+  renderer.code = (options: { text: string; lang?: string; highlightedCode?: string }) => {
     // If we have pre-highlighted code, use it
-    if ((arguments[0] as any).highlightedCode) {
-      return (arguments[0] as any).highlightedCode;
+    if (options.highlightedCode) {
+      return options.highlightedCode;
     }
     // Fallback to default rendering
-    if (lang) {
-      return `<pre><code class="language-${lang}">${text}</code></pre>`;
+    if (options.lang) {
+      return `<pre><code class="language-${options.lang}">${options.text}</code></pre>`;
     }
-    return `<pre><code>${text}</code></pre>`;
+    return `<pre><code>${options.text}</code></pre>`;
   };
 
   marked.use({ renderer });
@@ -109,11 +109,11 @@ export async function processBlogPost(
 
   return {
     slug,
-    title: frontmatter.title || 'Untitled',
-    date: frontmatter.date || new Date().toISOString().split('T')[0],
-    description: frontmatter.description || '',
-    tags: frontmatter.tags || [],
-    draft: frontmatter.draft || false,
+    title: (frontmatter.title as string) || 'Untitled',
+    date: (frontmatter.date as string) || new Date().toISOString().split('T')[0],
+    description: (frontmatter.description as string) || '',
+    tags: (frontmatter.tags as string[]) || [],
+    draft: (frontmatter.draft as boolean) || false,
     content,
     html,
   };
@@ -127,9 +127,9 @@ export async function processPage(markdownContent: string): Promise<PageContent>
   const html = await markdownToHtml(content);
 
   return {
-    title: frontmatter.title || '',
-    lastUpdated: frontmatter.lastUpdated,
-    location: frontmatter.location,
+    title: (frontmatter.title as string) || '',
+    lastUpdated: frontmatter.lastUpdated as string | undefined,
+    location: frontmatter.location as string | undefined,
     html,
   };
 }
