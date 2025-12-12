@@ -652,7 +652,7 @@
       "Step 4: Add any other social media links",
       "Step 5: Verify all links open correctly"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "style",
@@ -688,7 +688,7 @@
       "Step 4: Verify images are meaningful or decorative as appropriate",
       "Step 5: Run accessibility audit"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -700,7 +700,7 @@
       "Step 4: Run accessibility audit",
       "Step 5: Verify heading structure is logical and accessible"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
