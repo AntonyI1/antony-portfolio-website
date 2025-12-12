@@ -1,0 +1,107 @@
+.recent-posts {
+  margin-top: var(--spacing-section, 4rem);
+}
+
+.recent-posts h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl, 2rem);
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.recent-posts-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.recent-post-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius, 12px);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recent-post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft, 0 4px 20px rgba(0, 0, 0, 0.08));
+}
+
+.recent-post-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.recent-post-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl, 1.5rem);
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  transition: color 0.2s ease;
+}
+
+.recent-post-link:hover .recent-post-title {
+  color: var(--accent-primary);
+}
+
+.recent-post-date {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.recent-post-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.recent-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.recent-post-tags .tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  background: var(--accent-glow, rgba(232, 168, 84, 0.15));
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-secondary);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.see-all-link {
+  display: inline-block;
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--text-lg, 1.25rem);
+  transition: color 0.2s ease;
+}
+
+.see-all-link:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .recent-posts-list {
+    gap: 2rem;
+  }
+
+  .recent-post-card {
+    padding: 2rem;
+  }
+}

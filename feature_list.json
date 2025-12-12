@@ -126,7 +126,7 @@
       "Step 3: Verify directories exist and are tracked by git",
       "Step 4: Add .gitkeep or example files if needed"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
@@ -186,7 +186,7 @@
       "Step 4: Add 'See all posts' link to /blog",
       "Step 5: Verify recent posts appear on home page"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

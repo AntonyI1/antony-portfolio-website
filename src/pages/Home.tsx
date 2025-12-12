@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { RecentPosts } from '../components/home/RecentPosts';
 import './Home.css';
 
 export function Home() {
@@ -19,6 +20,8 @@ export function Home() {
           </Link>
         </div>
       </section>
+
+      <RecentPosts />
 
       <section className="home-highlights">
         <h2>What I'm Up To</h2>
