@@ -34,7 +34,7 @@ export const experiences: Experience[] = [
   {
     title: "AI Engineer",
     company: "StartGuides",
-    location: "Remote",
+    location: "California, Remote",
     startDate: "Dec 2025",
     endDate: "Present",
     isCurrent: true,
@@ -42,7 +42,7 @@ export const experiences: Experience[] = [
   {
     title: "Software Engineer",
     company: "Genesis Healthcare",
-    location: "Irvine, CA",
+    location: "California, Remote",
     startDate: "Sep 2024",
     endDate: "Dec 2025",
     achievements: [

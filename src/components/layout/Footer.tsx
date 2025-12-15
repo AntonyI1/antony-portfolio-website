@@ -10,7 +10,7 @@ export function Footer() {
           <a href="https://github.com/Antonyi1" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
-          <a href="https://linkedin.com/in/antonyibrahim" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/antony-ibrahim/" target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
           <a href="mailto:antonyibrahim0@gmail.com">
