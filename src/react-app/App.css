@@ -378,6 +378,25 @@ body {
   border-color: rgba(139, 148, 237, 0.3);
 }
 
+.project-featured {
+  border-color: rgba(6, 182, 212, 0.3);
+  background: rgba(6, 182, 212, 0.05);
+}
+
+.app.light .project-featured {
+  border-color: rgba(25, 118, 210, 0.35);
+  background: rgba(25, 118, 210, 0.06);
+  box-shadow: 0 4px 20px rgba(25, 118, 210, 0.12);
+}
+
+.project-featured::before {
+  transform: scaleX(1);
+}
+
+.app.light .project-featured::before {
+  background: linear-gradient(90deg, #1976d2, #1565c0);
+}
+
 .project-title {
   font-size: 1.5rem;
   font-weight: 700;

@@ -11,10 +11,10 @@ function App() {
   const [showAllSkills, setShowAllSkills] = useState(false);
 
   const texts = [
-    "AI Engineer",
     "Software Engineer",
     "Full-Stack Developer",
-    "Data Pipeline Engineer"
+    "AI/ML Engineer",
+    "Backend Engineer"
   ];
 
   useEffect(() => {
@@ -111,21 +111,24 @@ function App() {
       description: "Full-stack Pokemon card trading platform built with React, Express.js, and MongoDB. Features user authentication, advanced filtering, personalized collections, and real-time updates with Google OAuth integration.",
       technologies: ["React", "Express.js", "Node.js", "MongoDB", "Google OAuth", "TailwindCSS", "AWS"],
       link: "https://github.com/gavinnewin/pokeTrader",
-      icon: "github"
+      icon: "github",
+      featured: false
+    },
+    {
+      title: "VisionBox — AI Security Camera System",
+      description: "Open-source AI surveillance system that detects people, vehicles, and animals on any IP camera. Trained a custom YOLOv8 model end-to-end. Features a motion-first pipeline that idles 90%+ of the time. Implements SORT multi-object tracking with Kalman filter and Hungarian algorithm. Built with a Flask REST API, SQLite for event storage, and a live-streaming web dashboard. Deployed on real hardware with automatic retention management.",
+      technologies: ["Python", "PyTorch", "YOLOv8", "OpenCV", "Flask", "SQLite", "FFmpeg"],
+      link: "https://github.com/AntonyI1/VisionBox",
+      icon: "github",
+      featured: true
     },
     {
       title: "TombVM - Virtual Machine Simulator",
       description: "Custom C++ virtual machine for binary analysis and malware inspection. Features 8-bit instruction set, register-based architecture, simulated memory, and comprehensive test harness for safe program execution.",
       technologies: ["C++", "CMake", "Binary Analysis", "Virtual Machine", "Assembly", "Python"],
       link: "https://github.com/AntonyI1/tombVM",
-      icon: "github"
-    },
-    {
-      title: "Genomic Data Pipeline Optimization",
-      description: "Professional project at Genesis Healthcare: Optimized multi-database ETL pipeline processing over 21 million rows, reducing runtime from 2 hours to 15 minutes (88% faster). Automated cloud-database deployments and AWS S3 backups with Python.",
-      technologies: ["Python", "AWS", "ETL", "MongoDB", "PostgreSQL", "CI/CD"],
-      link: null,
-      icon: null
+      icon: "github",
+      featured: false
     }
   ];
 
@@ -141,13 +144,16 @@ function App() {
   ];
 
   const featuredSkills = [
-    "Python", "TypeScript", "AWS", "React", "Node.js", "PostgreSQL", "Docker", "TensorFlow", "n8n"
+    "Python", "TypeScript", "React", "AWS", "FastAPI", "PostgreSQL", "Docker", "PyTorch", "Go"
   ];
 
   const allSkills = [
-    "Python", "TypeScript", "JavaScript", "C++", "Java", "SQL",
-    "AWS", "React", "Node.js", "Express.js", "PostgreSQL", "MongoDB",
-    "Docker", "Git", "Linux", "TensorFlow", "Pandas", "NumPy", "n8n"
+    "Python", "Go", "JavaScript", "TypeScript", "SQL", "C++", "C#", "Java",
+    "FastAPI", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "SQLite", "REST APIs",
+    "React", "Next.js", "TailwindCSS", "HTML", "CSS",
+    "AWS", "Azure", "Docker", "GitHub Actions", "CI/CD", "Git", "Linux",
+    "PyTorch", "OpenCV", "OpenVINO", "RAG", "FAISS",
+    "TensorFlow", "Pandas", "NumPy", "n8n"
   ];
 
   return (
@@ -223,10 +229,9 @@ function App() {
             A <span className="typing-text">{typedText}</span><span className="cursor">|</span>
           </h2>
           <p className="hero-description">
-            I'm passionate about building scalable data pipelines and AI-powered solutions. 
-            I've optimized data processing systems, reducing runtime by 88% and cutting 
-            infrastructure costs by 85%. I love creating innovative software that makes a 
-            meaningful impact across various industries and technologies.
+            I build full-stack applications and AI-powered systems. I've led development of a CRM
+            serving 40+ daily users at a defense contractor, built enterprise chatbots with RAG,
+            and reduced ETL runtime by 88% and infrastructure costs by 85%.
           </p>
           <div className="hero-actions">
             <a href="/Antony_Ibrahim_Resume.pdf" className="btn btn-primary" target="_blank" rel="noopener noreferrer">
@@ -255,11 +260,20 @@ function App() {
               <div className="timeline-marker current"></div>
               <div className="timeline-content">
                 <div className="timeline-header">
-                  <h3>AI Engineer</h3>
-                  <span className="timeline-company">StartGuides</span>
+                  <h3>Software Engineer</h3>
+                  <span className="timeline-company">Startguides — Defense Contractor</span>
                   <span className="timeline-date">Dec 2025 - Present</span>
                 </div>
-                <p className="timeline-location">Remote</p>
+                <p className="timeline-location">Remote — California, USA</p>
+                <ul className="timeline-achievements">
+                  <li>Led development of Meridian, a full-stack CRM (React, TypeScript, FastAPI, PostgreSQL) serving <strong>40+</strong> daily users</li>
+                  <li>Architected a modular plugin system with RBAC, replacing 3+ external tools with 6 in-house services</li>
+                  <li>Drove product roadmap with executives across sales, operations, and management, shipping weekly</li>
+                  <li>Built a bulk importer with fuzzy matching and duplicate detection for <strong>150K+</strong> legacy records across tables</li>
+                  <li>Reduced page load times from 8s to under <strong>2s</strong> by parallelizing API calls and optimizing PostgreSQL indexes</li>
+                  <li>Automated executive reporting via n8n, scheduling data aggregation and email delivery</li>
+                  <li>Managed containerized deployments on Azure with Docker, maintaining GCC High compliance</li>
+                </ul>
               </div>
             </div>
 
@@ -269,32 +283,15 @@ function App() {
                 <div className="timeline-header">
                   <h3>Software Engineer</h3>
                   <span className="timeline-company">Genesis Healthcare</span>
-                  <span className="timeline-date">Sep 2024 - Dec 2025</span>
+                  <span className="timeline-date">Jun 2024 - Dec 2025</span>
                 </div>
-                <p className="timeline-location">Irvine, CA</p>
+                <p className="timeline-location">Remote — California, USA & Japan</p>
                 <ul className="timeline-achievements">
-                  <li>Optimized ETL pipeline processing 21M+ rows, reducing runtime by <strong>88%</strong></li>
-                  <li>Reduced infrastructure costs by <strong>85%</strong> through strategic AWS migration</li>
-                  <li>Deployed enterprise chatbots powered by AWS Bedrock and Claude 3.5 Sonnet</li>
-                  <li>Automated cloud deployments saving 2 hours per release</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="timeline-item">
-              <div className="timeline-marker"></div>
-              <div className="timeline-content">
-                <div className="timeline-header">
-                  <h3>Software Engineer Intern</h3>
-                  <span className="timeline-company">Genesis Healthcare</span>
-                  <span className="timeline-date">June 2024 - Sep 2024</span>
-                </div>
-                <p className="timeline-location">Tokyo, Japan</p>
-                <ul className="timeline-achievements">
-                  <li>Refactored 5,000+ lines of Ruby to Python, improving performance by <strong>35%</strong></li>
-                  <li>Co-authored published research paper on comparative genomic analysis</li>
-                  <li>Provisioned secure JupyterHub environment for 3 enterprise partners</li>
-                  <li>Enhanced security compliance with AWS IAM roles and MFA</li>
+                  <li>Built enterprise chatbots on AWS Bedrock with RAG and FAISS vector search over internal knowledge bases</li>
+                  <li>Developed embedding pipelines and knowledge bases to improve AI context matching and retrieval accuracy</li>
+                  <li>Reduced ETL runtime by <strong>88%</strong> (2 hrs to 15 min) by refactoring batch processing over <strong>21M+</strong> rows</li>
+                  <li>Automated deployment pipelines with Apache Airflow, AWS Lambda, and Python, saving <strong>2+ hrs/release</strong></li>
+                  <li>Cut monthly infrastructure costs by <strong>85%</strong> by optimizing cloud resources and migrating to AWS EC2</li>
                 </ul>
               </div>
             </div>
@@ -305,13 +302,11 @@ function App() {
                 <div className="timeline-header">
                   <h3>Student</h3>
                   <span className="timeline-company">UC Irvine</span>
-                  <span className="timeline-date">Sep 2021 - June 2025</span>
+                  <span className="timeline-date">Sep 2021 - Jun 2025</span>
                 </div>
                 <p className="timeline-location">Irvine, CA</p>
                 <ul className="timeline-achievements">
                   <li>Bachelor of Science in Software Engineering</li>
-                  <li>Relevant coursework: Data Structures, OS, Networks, Software Design</li>
-                  <li>Programming languages: C++, Python, Java, JavaScript</li>
                 </ul>
               </div>
             </div>
@@ -351,7 +346,7 @@ function App() {
           <h2 className="section-title">PROJECTS</h2>
           <div className="projects-grid">
             {projects.map((project, index) => (
-              <div key={index} className="project-card">
+              <div key={index} className={`project-card ${project.featured ? 'project-featured' : ''}`}>
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
                 <div className="project-technologies">
